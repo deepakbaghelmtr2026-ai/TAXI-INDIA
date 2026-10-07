@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>National & International Standard Taxi Service | Mathura</title>
+    <style>
+        :root {
+            --gold: #FFD700;
+            --neon-blue: #00F0FF;
+            --dark-bg: #030712;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.12);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, sans-serif; }
+        body { background: var(--dark-bg); color: #FFF; overflow-x: hidden; }
+
+        /* 3D ग्लोइंग टॉप बार */
+        .top-banner {
+            background: linear-gradient(90deg, #FF0055, #7928CA, #00F0FF);
+            background-size: 200% 200%;
+            animation: gradientMove 3s infinite alternate;
+            padding: 10px; text-align: center; font-weight: 800; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #fff;
+        }
+        @keyframes gradientMove { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }
+
+        /* अल्ट्रा-एडवांस हीरो सेक्शन */
+        .hero { position: relative; padding: 40px 15px; text-align: center; background: radial-gradient(circle at 50% 20%, #111827 0%, #030712 100%); }
+        
+        .badge-3d {
+            display: inline-block; padding: 8px 18px; border-radius: 50px;
+            background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(0,240,255,0.1));
+            border: 1px solid var(--neon-blue); color: var(--neon-blue);
+            font-size: 12px; font-weight: bold; text-transform: uppercase; letter-spacing: 1.5px;
+            box-shadow: 0 0 15px rgba(0,240,255,0.3); margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: 32px; font-weight: 900; line-height: 1.2; margin-bottom: 10px;
+            background: linear-gradient(180deg, #FFFFFF 0%, #9CA3AF 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        .hero p { color: #9CA3AF; font-size: 15px; margin-bottom: 25px; }
+
+        /* 3D ग्लास बुकिंग कार्ड */
+        .glass-card {
+            background: var(--card-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border); border-radius: 24px; padding: 25px 18px;
+            max-width: 450px; margin: 0 auto; box-shadow: 0 30px 60px rgba(0,0,0,0.8); text-align: left;
+        }
+
+        .input-box { margin-bottom: 15px; position: relative; }
+        .input-box label { display: block; font-size: 12px; color: var(--gold); font-weight: 700; margin-bottom: 6px; text-transform: uppercase; }
+        
+        .input-box input, .input-box select {
+            width: 100%; padding: 14px; border-radius: 12px;
+            background: rgba(0, 0, 0, 0.6); border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #FFF; font-size: 15px; outline: none; transition: 0.3s;
+        }
+        .input-box input:focus, .input-box select:focus { border-color: var(--neon-blue); box-shadow: 0 0 10px rgba(0,240,255,0.4); }
+
+        .gps-btn {
+            position: absolute; right: 10px; top: 31px; background: var(--neon-blue); color: #000;
+            border: none; padding: 6px 12px; border-radius: 8px; font-weight: bold; font-size: 11px; cursor: pointer;
+        }
+
+        /* 3D कार सेलेक्टर ग्रिड */
+        .car-selector { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 15px 0; }
+        .car-option {
+            background: rgba(255,255,255,0.02); border: 1px solid var(--border);
+            padding: 10px 5px; border-radius: 12px; text-align: center; cursor: pointer; transition: 0.3s;
+        }
+        .car-option.active { border-color: var(--gold); background: rgba(255, 215, 0, 0.1); box-shadow: 0 0 15px rgba(255,215,0,0.2); }
+        .car-option h5 { font-size: 13px; color: #FFF; }
+        .car-option p { font-size: 10px; color: #888; }
+
+        /* लाइव किराया प्रदर्शन */
+        .fare-display {
+            background: linear-gradient(135deg, rgba(0,240,255,0.1), rgba(0,0,0,0.4));
+            border: 1px solid var(--neon-blue); border-radius: 12px; padding: 12px;
+            text-align: center; color: var(--neon-blue); font-size: 18px; font-weight: 800; margin-bottom: 20px;
+        }
+
+        /* बटन स्टाइल */
+        .btn-stack { display: flex; flex-direction: column; gap: 12px; }
+        
+        .btn-3d {
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            padding: 16px; border-radius: 50px; font-size: 16px; font-weight: 800; text-decoration: none;
+            text-transform: uppercase; transition: 0.3s; box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+        }
+        .btn-call { background: linear-gradient(135deg, #007BFF, #004085); color: #FFF; border: 1px solid #3399FF; }
+        .btn-wa { background: linear-gradient(135deg, #25D366, #128C7E); color: #FFF; border: 1px solid #34E775; }
+        .btn-3d:active { transform: scale(0.97); }
+
+        /* लाइव बुकिंग टोस्ट एनीमेशन */
+        .live-toast {
+            margin-top: 20px; background: rgba(255, 255, 255, 0.05); border-radius: 30px;
+            padding: 8px 16px; display: inline-flex; align-items: center; gap: 8px; font-size: 12px; color: #A0AAB8;
+        }
+        .pulse-dot { width: 8px; height: 8px; background: #25D366; border-radius: 50%; box-shadow: 0 0 10px #25D366; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+
+        footer { text-align: center; padding: 20px; font-size: 12px; color: #555; margin-top: 30px; }
+    </style>
+</head>
+<body>
+
+    <div class="top-banner">
+        🔥 24x7 ऑल इंडिया लक्जरी टैक्सी | 20% की विशेष छूट लागू
+    </div>
+
+    <section class="hero">
+        <div class="badge-3d">★ Mathura National Taxi Service ★</div>
+        <h1>मथुरा एवं ऑल इंडिया प्रीमियम राइड्स</h1>
+        <p>एक क्लिक में ऑटोमैटिक बुकिंग और सबसे कम किराए की गारंटी</p>
+
+        <div class="glass-card">
+            
+            <div class="input-box">
+                <label>पिकअप लोकेशन (Pickup)</label>
+                <input type="text" id="pickupLoc" placeholder="उदा. मथुरा जंक्शन / आपका पता">
+                <button class="gps-btn" onclick="getGPS()">📍 GPS</button>
+            </div>
+
+            <div class="input-box">
+                <label>कहाँ जाना है? (Drop)</label>
+                <input type="text" id="dropLoc" placeholder="उदा. दिल्ली, आगरा, जयपुर, वृंदावन">
+            </div>
+
+            <label style="font-size: 12px; color: var(--gold); font-weight: 700; text-transform: uppercase;">गाड़ी चुनें (Car Class)</label>
+            <div class="car-selector">
+                <div class="car-option active" onclick="selectCar(this, 11, 'Sedan (Dzire)')">
+                    <h5>Sedan</h5>
+                    <p>₹11/किमी</p>
+                </div>
+                <div class="car-option" onclick="selectCar(this, 14, 'SUV (Ertiga)')">
+                    <h5>SUV</h5>
+                    <p>₹14/किमी</p>
+                </div>
+                <div class="car-option" onclick="selectCar(this, 18, 'Innova')">
+                    <h5>Innova</h5>
+                    <p>₹18/किमी</p>
+                </div>
+            </div>
+
+            <div class="fare-display" id="fareRate">
+                दर: ₹11 / किलोमीटर (फिक्स्ड रेट)
+            </div>
+
+            <div class="btn-stack">
+                <a href="tel:9720298593" class="btn-3d btn-call">
+                    📞 कॉल करके बुक करें (9720298593)
+                </a>
+                <a href="#" onclick="sendWhatsApp()" class="btn-3d btn-wa">
+                    💬 व्हाट्सएप पर ऑटो बुक करें
+                </a>
+            </div>
+
+        </div>
+
+        <div class="live-toast">
+            <div class="pulse-dot"></div>
+            <span>अभी 5 मिनट पहले मथुरा से दिल्ली के लिए डिजायर बुक हुई</span>
+        </div>
+    </section>
+
+    <footer>
+        © 2026 Mathura Premier Taxi Network | 9720298593
+    </footer>
+
+    <script>
+        let currentRate = 11;
+        let currentCar = "Sedan (Dzire)";
+
+        function selectCar(element, rate, carName) {
+            document.querySelectorAll('.car-option').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
+            currentRate = rate;
+            currentCar = carName;
+            document.getElementById('fareRate').innerText = "दर: ₹" + rate + " / किलोमीटर (" + carName + ")";
+        }
+
+        function getGPS() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(position => {
+                    document.getElementById('pickupLoc').value = "मेरी लाइव लोकेशन (GPS Detected)";
+                }, () => {
+                    alert("GPS चालू करें या नाम लिखें।");
+                });
+            }
+        }
+
+        function sendWhatsApp() {
+            let pickup = document.getElementById('pickupLoc').value || "मथुरा";
+            let drop = document.getElementById('dropLoc').value || "आउटस्टेशन";
+            let msg = `नमस्ते, मुझे टैक्सी बुक करनी है।%0A📍 पिकअप: ${pickup}%0A🏁 ड्रॉप: ${drop}%0A🚖 गाडी: ${currentCar}%0A💰 रेट: ₹${currentRate}/km`;
+            window.location.href = `https://wa.me/919720298593?text=${msg}`;
+        }
+    </script>
+</body>
+</html>
