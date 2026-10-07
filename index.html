@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>National & International Standard Taxi Service | Mathura</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --gold: #FFD700;
@@ -16,43 +17,55 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, sans-serif; }
         body { background: var(--dark-bg); color: #FFF; overflow-x: hidden; }
 
-        /* 3D ग्लोइंग टॉप बार */
         .top-banner {
             background: linear-gradient(90deg, #FF0055, #7928CA, #00F0FF);
             background-size: 200% 200%;
-            animation: gradientMove 3s infinite alternate;
+            animation: gradientWave 3s infinite alternate;
             padding: 10px; text-align: center; font-weight: 800; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #fff;
         }
-        @keyframes gradientMove { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }
+        @keyframes gradientWave {
+            0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; }
+        }
 
-        /* अल्ट्रा-एडवांस हीरो सेक्शन */
-        .hero { position: relative; padding: 40px 15px; text-align: center; background: radial-gradient(circle at 50% 20%, #111827 0%, #030712 100%); }
-        
+        .track-container {
+            width: 100%; height: 70px; position: relative; margin: 10px 0;
+            background: linear-gradient(90deg, transparent, rgba(0,240,255,0.1), transparent);
+            border-top: 1px dashed var(--neon-blue); border-bottom: 1px dashed var(--neon-blue);
+            overflow: hidden;
+        }
+        .moving-car {
+            position: absolute; top: 12px; left: -150px;
+            font-size: 40px; color: var(--gold);
+            animation: driveCar 8s linear infinite;
+            filter: drop-shadow(0 0 10px var(--gold));
+        }
+        @keyframes driveCar {
+            0% { left: -150px; }
+            100% { left: 100%; }
+        }
+
+        .hero { position: relative; padding: 30px 15px; text-align: center; background: radial-gradient(circle at 50% 20%, #111827 0%, #030712 100%); }
         .badge-3d {
             display: inline-block; padding: 8px 18px; border-radius: 50px;
             background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(0,240,255,0.1));
-            border: 1px solid var(--neon-blue); color: var(--neon-blue);
+            border: 1px solid var(--border); color: var(--gold);
             font-size: 12px; font-weight: bold; text-transform: uppercase; letter-spacing: 1.5px;
             box-shadow: 0 0 15px rgba(0,240,255,0.3); margin-bottom: 15px;
         }
-
         .hero h1 {
-            font-size: 32px; font-weight: 900; line-height: 1.2; margin-bottom: 10px;
-            background: linear-gradient(180deg, #FFFFFF 0%, #9CA3AF 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            font-size: 28px; font-weight: 900; line-height: 1.2; margin-bottom: 10px;
+            background: linear-gradient(180deg, #FFFFFF 0%, #9CA3AF 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
+        .hero p { color: #9CA3AF; font-size: 14px; margin-bottom: 25px; }
 
-        .hero p { color: #9CA3AF; font-size: 15px; margin-bottom: 25px; }
-
-        /* 3D ग्लास बुकिंग कार्ड */
         .glass-card {
             background: var(--card-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--border); border-radius: 24px; padding: 25px 18px;
             max-width: 450px; margin: 0 auto; box-shadow: 0 30px 60px rgba(0,0,0,0.8); text-align: left;
         }
-
         .input-box { margin-bottom: 15px; position: relative; }
         .input-box label { display: block; font-size: 12px; color: var(--gold); font-weight: 700; margin-bottom: 6px; text-transform: uppercase; }
-        
         .input-box input, .input-box select {
             width: 100%; padding: 14px; border-radius: 12px;
             background: rgba(0, 0, 0, 0.6); border: 1px solid rgba(255, 255, 255, 0.15);
@@ -60,12 +73,8 @@
         }
         .input-box input:focus, .input-box select:focus { border-color: var(--neon-blue); box-shadow: 0 0 10px rgba(0,240,255,0.4); }
 
-        .gps-btn {
-            position: absolute; right: 10px; top: 31px; background: var(--neon-blue); color: #000;
-            border: none; padding: 6px 12px; border-radius: 8px; font-weight: bold; font-size: 11px; cursor: pointer;
-        }
+        .gps-btn { position: absolute; right: 10px; top: 33px; background: var(--neon-blue); color: #000; border: none; padding: 6px 12px; border-radius: 8px; font-weight: bold; font-size: 11px; cursor: pointer; }
 
-        /* 3D कार सेलेक्टर ग्रिड */
         .car-selector { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 15px 0; }
         .car-option {
             background: rgba(255,255,255,0.02); border: 1px solid var(--border);
@@ -75,32 +84,29 @@
         .car-option h5 { font-size: 13px; color: #FFF; }
         .car-option p { font-size: 10px; color: #888; }
 
-        /* लाइव किराया प्रदर्शन */
         .fare-display {
             background: linear-gradient(135deg, rgba(0,240,255,0.1), rgba(0,0,0,0.4));
             border: 1px solid var(--neon-blue); border-radius: 12px; padding: 12px;
-            text-align: center; color: var(--neon-blue); font-size: 18px; font-weight: 800; margin-bottom: 20px;
+            text-align: center; color: var(--neon-blue); font-size: 16px; font-weight: 800; margin-bottom: 20px;
         }
 
-        /* बटन स्टाइल */
         .btn-stack { display: flex; flex-direction: column; gap: 12px; }
-        
         .btn-3d {
             display: flex; align-items: center; justify-content: center; gap: 10px;
             padding: 16px; border-radius: 50px; font-size: 16px; font-weight: 800; text-decoration: none;
-            text-transform: uppercase; transition: 0.3s; box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+            text-transform: uppercase; transition: 0.3s;
         }
         .btn-call { background: linear-gradient(135deg, #007BFF, #004085); color: #FFF; border: 1px solid #3399FF; }
         .btn-wa { background: linear-gradient(135deg, #25D366, #128C7E); color: #FFF; border: 1px solid #34E775; }
-        .btn-3d:active { transform: scale(0.97); }
 
-        /* लाइव बुकिंग टोस्ट एनीमेशन */
-        .live-toast {
-            margin-top: 20px; background: rgba(255, 255, 255, 0.05); border-radius: 30px;
-            padding: 8px 16px; display: inline-flex; align-items: center; gap: 8px; font-size: 12px; color: #A0AAB8;
-        }
-        .pulse-dot { width: 8px; height: 8px; background: #25D366; border-radius: 50%; box-shadow: 0 0 10px #25D366; animation: pulse 1.5s infinite; }
-        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+        .section-title { font-size: 20px; font-weight: 800; color: var(--gold); text-align: center; margin: 35px 0 15px; }
+
+        .photo-gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 0 15px; max-width: 450px; margin: 0 auto; }
+        .photo-card { position: relative; border-radius: 15px; overflow: hidden; height: 110px; border: 1px solid var(--border); }
+        .photo-card img { width: 100%; height: 100%; object-fit: cover; }
+        .photo-card .tag { position: absolute; bottom: 0; width: 100%; background: rgba(0,0,0,0.8); color: #FFF; font-size: 11px; text-align: center; padding: 4px; }
+
+        .route-card { background: rgba(255,255,255,0.03); border: 1px solid var(--border); padding: 15px; border-radius: 15px; margin: 10px auto; max-width: 450px; text-align: left; }
 
         footer { text-align: center; padding: 20px; font-size: 12px; color: #555; margin-top: 30px; }
     </style>
@@ -108,7 +114,7 @@
 <body>
 
     <div class="top-banner">
-        🔥 24x7 ऑल इंडिया लक्जरी टैक्सी | 20% की विशेष छूट लागू
+        🔥 24x7 ऑल इंडिया लक्जरी टैक्सी | 20% की विशेष छूट चालू
     </div>
 
     <section class="hero">
@@ -116,37 +122,42 @@
         <h1>मथुरा एवं ऑल इंडिया प्रीमियम राइड्स</h1>
         <p>एक क्लिक में ऑटोमैटिक बुकिंग और सबसे कम किराए की गारंटी</p>
 
+        <div class="track-container">
+            <div class="moving-car"><i class="fa-solid fa-car-side"></i></div>
+        </div>
+
         <div class="glass-card">
-            
             <div class="input-box">
-                <label>पिकअप लोकेशन (Pickup)</label>
-                <input type="text" id="pickupLoc" placeholder="उदा. मथुरा जंक्शन / आपका पता">
+                <label>पिकअप लोकेशन (PICKUP)</label>
+                <input type="text" id="pickup" placeholder="उदा. मथुरा जंक्शन / आपका पता">
                 <button class="gps-btn" onclick="getGPS()">📍 GPS</button>
             </div>
 
             <div class="input-box">
-                <label>कहाँ जाना है? (Drop)</label>
-                <input type="text" id="dropLoc" placeholder="उदा. दिल्ली, आगरा, जयपुर, वृंदावन">
+                <label>कहाँ जाना है? (DROP)</label>
+                <input type="text" id="drop" placeholder="उदा. दिल्ली, आगरा, जयपुर, वृंदावन">
             </div>
 
-            <label style="font-size: 12px; color: var(--gold); font-weight: 700; text-transform: uppercase;">गाड़ी चुनें (Car Class)</label>
-            <div class="car-selector">
-                <div class="car-option active" onclick="selectCar(this, 11, 'Sedan (Dzire)')">
-                    <h5>Sedan</h5>
-                    <p>₹11/किमी</p>
-                </div>
-                <div class="car-option" onclick="selectCar(this, 14, 'SUV (Ertiga)')">
-                    <h5>SUV</h5>
-                    <p>₹14/किमी</p>
-                </div>
-                <div class="car-option" onclick="selectCar(this, 18, 'Innova')">
-                    <h5>Innova</h5>
-                    <p>₹18/किमी</p>
+            <div class="input-box">
+                <label>गाड़ी चुनें (CAR CLASS)</label>
+                <div class="car-selector">
+                    <div class="car-option" onclick="selectCar('Sedan Dzire', '11')">
+                        <h5>Sedan</h5>
+                        <p>₹11/किमी</p>
+                    </div>
+                    <div class="car-option active" onclick="selectCar('SUV (Ertiga)', '14')">
+                        <h5>SUV</h5>
+                        <p>₹14/किमी</p>
+                    </div>
+                    <div class="car-option" onclick="selectCar('Innova Crysta', '18')">
+                        <h5>Innova</h5>
+                        <p>₹18/किमी</p>
+                    </div>
                 </div>
             </div>
 
-            <div class="fare-display" id="fareRate">
-                दर: ₹11 / किलोमीटर (फिक्स्ड रेट)
+            <div class="fare-display" id="fareDisplay">
+                दर: ₹14 / किलोमीटर (SUV (Ertiga))
             </div>
 
             <div class="btn-stack">
@@ -157,47 +168,82 @@
                     💬 व्हाट्सएप पर ऑटो बुक करें
                 </a>
             </div>
-
         </div>
 
-        <div class="live-toast">
-            <div class="pulse-dot"></div>
-            <span>अभी 5 मिनट पहले मथुरा से दिल्ली के लिए डिजायर बुक हुई</span>
+        <h2 class="section-title">🏎️ हमारी प्रीमियम 3D गाड़ियाँ</h2>
+        <div class="photo-gallery">
+            <div class="photo-card">
+                <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?w=500" alt="Dzire">
+                <div class="tag">Swift Dzire (AC)</div>
+            </div>
+            <div class="photo-card">
+                <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=500" alt="Ertiga">
+                <div class="tag">Ertiga SUV</div>
+            </div>
+            <div class="photo-card">
+                <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=500" alt="Innova">
+                <div class="tag">Innova Crysta</div>
+            </div>
+            <div class="photo-card">
+                <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=500" alt="Tempo">
+                <div class="tag">Tempo Traveller</div>
+            </div>
+        </div>
+
+        <h2 class="section-title">🛕 मथुरा-वृंदावन दर्शन पैकेज</h2>
+        <div class="route-card" style="border-color: var(--gold);">
+            <h3 style="color: var(--gold);">बांके बिहारी & प्रेम मंदिर पैकेज</h3>
+            <p style="font-size: 12px; color: #CCC; margin-top:5px;">मथुरा जन्मभूमि ➔ प्रेम मंदिर ➔ बांके बिहारी ➔ इस्कॉन मंदिर (पूरा 1 दिन दर्शन)</p>
+        </div>
+
+        <h2 class="section-title">🗺️ प्रसिद्ध रूट्स & फिक्स रेट</h2>
+        <div class="route-card">
+            <h3>मथुरा ➔ दिल्ली एयरपोर्ट / NCR</h3>
+            <p style="font-size: 12px; color: #AAA;">वन-वे फिक्स रेट • टोल टैक्स शामिल</p>
+            <span style="color: var(--neon-blue); font-weight: bold;">₹2,499 से शुरू</span>
+        </div>
+        <div class="route-card">
+            <h3>मथुरा ➔ आगरा ताज महल टूर</h3>
+            <p style="font-size: 12px; color: #AAA;">पूरे दिन की ट्रिप • पिकअप & ड्रॉप</p>
+            <span style="color: var(--neon-blue); font-weight: bold;">₹1,999 से शुरू</span>
         </div>
     </section>
 
     <footer>
-        © 2026 Mathura Premier Taxi Network | 9720298593
+        © 2026 Mathura National Taxi Service. All Rights Reserved.
     </footer>
 
     <script>
-        let currentRate = 11;
-        let currentCar = "Sedan (Dzire)";
+        let selectedCar = "SUV (Ertiga)";
+        let selectedRate = "14";
 
-        function selectCar(element, rate, carName) {
-            document.querySelectorAll('.car-option').forEach(el => el.classList.remove('active'));
-            element.classList.add('active');
-            currentRate = rate;
-            currentCar = carName;
-            document.getElementById('fareRate').innerText = "दर: ₹" + rate + " / किलोमीटर (" + carName + ")";
+        function selectCar(carName, rate) {
+            selectedCar = carName;
+            selectedRate = rate;
+            document.getElementById('fareDisplay').innerText = `दर: ₹${rate} / किलोमीटर (${carName})`;
+            
+            let options = document.querySelectorAll('.car-option');
+            options.forEach(opt => opt.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+        }
+
+        function sendWhatsApp() {
+            let pickup = document.getElementById('pickup').value || 'मथुरा';
+            let drop = document.getElementById('drop').value || 'वृंदावन';
+            let url = `https://wa.me/919720298593?text=नमस्ते! मुझे टैक्सी बुक करनी है।%0A- पिकअप: ${pickup}%0A- ड्रॉप: ${drop}%0A- गाड़ी: ${selectedCar} (₹${selectedRate}/किमी)`;
+            window.open(url, '_blank');
         }
 
         function getGPS() {
             if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(position => {
-                    document.getElementById('pickupLoc').value = "मेरी लाइव लोकेशन (GPS Detected)";
-                }, () => {
-                    alert("GPS चालू करें या नाम लिखें।");
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    document.getElementById('pickup').value = "मेरा लाइव लोकेशन (GPS Captured)";
                 });
+            } else {
+                alert("GPS समर्थित नहीं है");
             }
-        }
-
-        function sendWhatsApp() {
-            let pickup = document.getElementById('pickupLoc').value || "मथुरा";
-            let drop = document.getElementById('dropLoc').value || "आउटस्टेशन";
-            let msg = `नमस्ते, मुझे टैक्सी बुक करनी है।%0A📍 पिकअप: ${pickup}%0A🏁 ड्रॉप: ${drop}%0A🚖 गाडी: ${currentCar}%0A💰 रेट: ₹${currentRate}/km`;
-            window.location.href = `https://wa.me/919720298593?text=${msg}`;
         }
     </script>
 </body>
-</html>
+                    </html>
+                    
