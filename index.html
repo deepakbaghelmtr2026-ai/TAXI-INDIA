@@ -18,7 +18,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
         html, body { width: 100%; overflow-x: hidden; background-color: var(--bg-dark); color: #FFFFFF; padding-bottom: 85px; }
 
-        /* Navigation Header */
+        /* Top Navigation Header */
         .top-nav {
             position: sticky; top: 0; z-index: 1000;
             background: rgba(12, 12, 12, 0.95); backdrop-filter: blur(12px);
@@ -37,7 +37,7 @@
         .hero-title { font-size: 26px; font-weight: 900; margin-bottom: 6px; color: #FFF; text-shadow: 0 0 15px rgba(0,240,255,0.3); }
         .hero-subtitle { font-size: 13px; color: var(--neon-blue); margin-bottom: 20px; font-weight: 600; }
 
-        /* Booking Card Widget */
+        /* Booking Widget */
         .booking-card {
             background: var(--card-dark); border: 1px solid var(--border-color);
             border-radius: 20px; padding: 22px; max-width: 500px; margin: 0 auto;
@@ -94,7 +94,7 @@
             text-decoration: none; font-weight: bold; font-size: 13px;
         }
 
-        /* All Directory Hub Grid (सभी 8 पेजेस शामिल) */
+        /* DIRECTORY HUB - FULL 10 VIP OPTIONS */
         .directory-section { padding: 10px 15px 30px 15px; max-width: 500px; margin: 0 auto; }
         .dir-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
         .dir-card {
@@ -105,7 +105,7 @@
         .dir-card span { font-size: 13px; font-weight: bold; display: block; }
         .dir-card small { font-size: 10px; color: #AAA; }
 
-        /* Fixed Bottom Bar */
+        /* Fixed Bottom Call/WhatsApp Bar */
         .fixed-bottom {
             position: fixed; bottom: 0; left: 0; width: 100%; background: #121212;
             border-top: 1px solid var(--border-color); display: flex; padding: 12px; gap: 10px; z-index: 1000;
@@ -117,7 +117,7 @@
 </head>
 <body>
 
-    <!-- TOP HEADER -->
+    <!-- TOP NAV -->
     <div class="top-nav">
         <div class="brand-logo"><i class="fa-solid fa-car-side"></i> GOVIND TAXI BOOKING</div>
         <a href="tel:9720298593" class="emergency-call"><i class="fa-solid fa-shield-halved"></i> 24x7 SOS</a>
@@ -128,7 +128,6 @@
         <h1 class="hero-title">गोविंद टैक्सी सर्विस</h1>
         <p class="hero-subtitle">उत्तर प्रदेश & नेशनल हाइवे की नंबर-1 VIP कैब</p>
 
-        <!-- BOOKING CARD -->
         <div class="booking-card">
             <div class="form-group">
                 <label><i class="fa-solid fa-location-dot"></i> पिकअप स्थान</label>
@@ -164,12 +163,9 @@
             <p>100% सैनिटाइज्ड, एयर-कंडीशन और नए मॉडल की गाड़ियाँ</p>
         </div>
 
-        <!-- CAR CARD 1: SWIFT DZIRE -->
         <div class="car-showroom-card">
             <div class="car-badge">सेडान क्लास</div>
-            <div class="car-visual-box">
-                <i class="fa-solid fa-car"></i>
-            </div>
+            <div class="car-visual-box"><i class="fa-solid fa-car"></i></div>
             <div class="car-info">
                 <h3>Swift Dzire (Sedan)</h3>
                 <div class="car-rate-tag">₹11/किमी <small style="color:#aaa; font-size:11px;">(अनुमानित शुरूआती)</small></div>
@@ -183,12 +179,9 @@
             </div>
         </div>
 
-        <!-- CAR CARD 2: ERTIGA SUV -->
         <div class="car-showroom-card">
             <div class="car-badge">फैमिली SUV</div>
-            <div class="car-visual-box">
-                <i class="fa-solid fa-car-rear"></i>
-            </div>
+            <div class="car-visual-box"><i class="fa-solid fa-car-rear"></i></div>
             <div class="car-info">
                 <h3>Ertiga (6-Seater SUV)</h3>
                 <div class="car-rate-tag">₹14/किमी <small style="color:#aaa; font-size:11px;">(अनुमानित शुरूआती)</small></div>
@@ -202,12 +195,9 @@
             </div>
         </div>
 
-        <!-- CAR CARD 3: INNOVA CRYSTA -->
         <div class="car-showroom-card">
             <div class="car-badge" style="border-color:var(--accent-gold); color:var(--accent-gold);">VIP लक्जरी</div>
-            <div class="car-visual-box">
-                <i class="fa-solid fa-car-side"></i>
-            </div>
+            <div class="car-visual-box"><i class="fa-solid fa-car-side"></i></div>
             <div class="car-info">
                 <h3>Innova Crysta VIP</h3>
                 <div class="car-rate-tag">₹18/किमी <small style="color:#aaa; font-size:11px;">(अनुमानित शुरूआती)</small></div>
@@ -222,51 +212,71 @@
         </div>
     </div>
 
-    <!-- ALL DIRECTORY HUB (सभी 8 ऑप्शंस वापस लाइव) -->
+    <!-- DIRECTORY HUB - COMPLETE 10 OPTIONS -->
     <div class="directory-section">
         <div class="section-header">
-            <h2>🌐 हमारी सभी VIP सेवाएं</h2>
+            <h2>🌐 हमारी सभी VIP सेवाएं (10 पेजेस)</h2>
         </div>
         <div class="dir-grid">
+            <!-- Option 1 -->
             <a href="mathura-darshan.html" class="dir-card">
                 <i class="fa-solid fa-gopuram"></i>
-                <span>मथुरा-वृंदावन</span>
+                <span>1. मथुरा-वृंदावन</span>
                 <small>वीआईपी दर्शन पैकेज</small>
             </a>
+            <!-- Option 2 -->
             <a href="govardhan-tour.html" class="dir-card">
                 <i class="fa-solid fa-mountain"></i>
-                <span>गोवर्धन परिक्रमा</span>
+                <span>2. गोवर्धन परिक्रमा</span>
                 <small>बरसाना & नंदगाँव</small>
             </a>
+            <!-- Option 3 -->
             <a href="agra-tour.html" class="dir-card">
                 <i class="fa-solid fa-monument"></i>
-                <span>आगरा ताज महल</span>
+                <span>3. आगरा ताज महल</span>
                 <small>सेम-डे टूर राइड</small>
             </a>
+            <!-- Option 4 -->
             <a href="airport-transfer.html" class="dir-card">
                 <i class="fa-solid fa-plane"></i>
-                <span>एयरपोर्ट ट्रांसफर</span>
+                <span>4. एयरपोर्ट ट्रांसफर</span>
                 <small>दिल्ली/नोएडा NCR</small>
             </a>
+            <!-- Option 5 -->
             <a href="fare-calculator.html" class="dir-card">
                 <i class="fa-solid fa-calculator"></i>
-                <span>फेयर कैलकुलेटर</span>
+                <span>5. फेयर कैलकुलेटर</span>
                 <small>लाइव रेट जाने</small>
             </a>
+            <!-- Option 6 -->
             <a href="digital-invoice.html" class="dir-card">
                 <i class="fa-solid fa-file-invoice"></i>
-                <span>डिजिटल बिल</span>
+                <span>6. डिजिटल बिल</span>
                 <small>ऑनलाइन इनवॉइस</small>
             </a>
+            <!-- Option 7 -->
             <a href="driver-join.html" class="dir-card">
                 <i class="fa-solid fa-id-card"></i>
-                <span>ड्राइवर ऑनबोर्ड</span>
+                <span>7. ड्राइवर ऑनबोर्ड</span>
                 <small>गाड़ी अटैच करें</small>
             </a>
+            <!-- Option 8 -->
+            <a href="fleet-3d.html" class="dir-card">
+                <i class="fa-solid fa-vr-cardboard"></i>
+                <span>8. 3D शो-रूम</span>
+                <small>360 डिग्री गाड़ियाँ</small>
+            </a>
+            <!-- Option 9 -->
             <a href="contact-us.html" class="dir-card">
                 <i class="fa-solid fa-headset"></i>
-                <span>24x7 सपोर्ट</span>
+                <span>9. 24x7 सपोर्ट</span>
                 <small>इमरजेंसी हेल्पलाइन</small>
+            </a>
+            <!-- Option 10 -->
+            <a href="tel:9720298593" class="dir-card" style="border-color: var(--accent-gold);">
+                <i class="fa-solid fa-phone-volume" style="color:var(--accent-gold);"></i>
+                <span>10. डायरेक्ट कॉल</span>
+                <small>9720298593</small>
             </a>
         </div>
     </div>
@@ -304,6 +314,5 @@
         }
     </script>
 </body>
-                </html>
-
-                
+                    </html>
+                    
