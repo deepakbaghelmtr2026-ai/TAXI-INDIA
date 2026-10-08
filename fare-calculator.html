@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ऑनलाइन फेयर कैलकुलेटर | Govind Taxi Booking</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #000000;
+            --card-dark: #121212;
+            --accent-gold: #FFD700;
+            --brand-green: #00D26A;
+            --neon-blue: #00F0FF;
+            --border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
+        body { background-color: var(--bg-dark); color: #FFFFFF; overflow-x: hidden; padding-bottom: 80px; }
+
+        /* Top Nav */
+        .top-nav {
+            position: sticky; top: 0; z-index: 1000;
+            background: rgba(18, 18, 18, 0.95); backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color); padding: 15px 20px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .brand-logo { font-size: 16px; font-weight: 900; color: var(--accent-gold); text-decoration: none; }
+        .back-btn { color: var(--neon-blue); text-decoration: none; font-size: 14px; font-weight: bold; }
+
+        /* Hero Banner */
+        .hero-banner {
+            padding: 30px 15px; text-align: center;
+            background: linear-gradient(180deg, #181818 0%, #000 100%);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .hero-banner h1 { font-size: 24px; color: var(--accent-gold); margin-bottom: 8px; }
+        .hero-banner p { font-size: 13px; color: #DDD; }
+
+        .container { padding: 20px 15px; max-width: 500px; margin: 0 auto; }
+
+        .calc-card {
+            background: var(--card-dark); border: 1px solid var(--border-color);
+            border-radius: 20px; padding: 20px; box-shadow: 0 10px 25px rgba(0,240,255,0.08);
+        }
+
+        .form-group { margin-bottom: 18px; }
+        .form-group label { display: block; font-size: 13px; color: var(--accent-gold); font-weight: 700; margin-bottom: 8px; }
+        .form-group input, .form-group select {
+            width: 100%; padding: 14px; border-radius: 12px; background: #1E1E1E;
+            border: 1px solid var(--border-color); color: #FFF; outline: none; font-size: 14px;
+        }
+
+        .calc-btn {
+            width: 100%; padding: 15px; border-radius: 30px; border: none; font-weight: 900;
+            font-size: 15px; cursor: pointer; background: linear-gradient(135deg, var(--neon-blue), #0088cc);
+            color: #000; text-transform: uppercase; margin-bottom: 15px;
+        }
+
+        .result-box {
+            display: none; background: #181818; border: 1px solid var(--accent-gold);
+            border-radius: 15px; padding: 15px; text-align: center; margin-top: 15px;
+        }
+        .result-title { font-size: 12px; color: #AAA; }
+        .result-amount { font-size: 24px; font-weight: 900; color: var(--brand-green); margin: 5px 0; }
+        .result-note { font-size: 11px; color: #FFD700; margin-bottom: 12px; }
+
+        .btn-wa-confirm {
+            display: block; width: 100%; padding: 12px; border-radius: 25px;
+            background: var(--brand-green); color: #FFF; text-decoration: none; font-weight: bold; font-size: 14px;
+        }
+
+        /* Fixed Bottom Bar */
+        .fixed-bottom {
+            position: fixed; bottom: 0; left: 0; width: 100%; background: #121212;
+            border-top: 1px solid var(--border-color); display: flex; padding: 12px; gap: 10px; z-index: 1000;
+        }
+        .fixed-bottom a { flex: 1; text-align: center; padding: 12px; border-radius: 30px; font-weight: bold; font-size: 13px; text-decoration: none; color: #fff; }
+        .btn-call { background: #007BFF; }
+        .btn-wa { background: #25D366; }
+    </style>
+</head>
+<body>
+
+    <!-- TOP NAV -->
+    <div class="top-nav">
+        <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> होम पेज</a>
+        <a href="index.html" class="brand-logo"><i class="fa-solid fa-car-side"></i> GOVIND TAXI</a>
+    </div>
+
+    <!-- HERO BANNER -->
+    <div class="hero-banner">
+        <h1>🧮 अनुमानित किराया कैलकुलेटर</h1>
+        <p>अपनी यात्रा की दूरी के हिसाब से तुरंत अनुमानित किराया जानें</p>
+    </div>
+
+    <div class="container">
+        <div class="calc-card">
+            <div class="form-group">
+                <label><i class="fa-solid fa-route"></i> कुल अनुमानित दूरी (किलोमीटर में)</label>
+                <input type="number" id="distanceKm" placeholder="उदा. 150">
+            </div>
+
+            <div class="form-group">
+                <label><i class="fa-solid fa-car"></i> गाड़ी का प्रकार चुनें</label>
+                <select id="carRate">
+                    <option value="11">Swift Dzire (Sedan) - ₹11/km</option>
+                    <option value="14">Ertiga (6-Seater SUV) - ₹14/km</option>
+                    <option value="18">Innova Crysta VIP - ₹18/km</option>
+                    <option value="25">Tempo Traveller - ₹25/km</option>
+                </select>
+            </div>
+
+            <button class="calc-btn" onclick="calculateFare()"><i class="fa-solid fa-calculator"></i> किराया जानें</button>
+
+            <div id="resultBox" class="result-box">
+                <div class="result-title">अनुमानित कुल किराया:</div>
+                <div id="fareAmount" class="result-amount">₹0</div>
+                <div class="result-note">* नोट: टोल टैक्स, पार्किंग व सीजन के अनुसार अंतिम किराया अलग हो सकता है।</div>
+                <a id="waConfirmBtn" href="#" class="btn-wa-confirm"><i class="fa-brands fa-whatsapp"></i> इस रेट पर बुकिंग के लिए बात करें</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- FIXED BOTTOM BAR -->
+    <div class="fixed-bottom">
+        <a href="tel:9720298593" class="btn-call"><i class="fa-solid fa-phone"></i> डायरेक्ट कॉल</a>
+        <a href="https://wa.me/919720298593?text=नमस्ते Govind Taxi! मुझे किराए के बारे में बात करनी है।" class="btn-wa"><i class="fa-brands fa-whatsapp"></i> व्हाट्सएप पूछताछ</a>
+    </div>
+
+    <script>
+        function calculateFare() {
+            let km = document.getElementById('distanceKm').value;
+            let rate = document.getElementById('carRate').value;
+            if(!km || km <= 0) {
+                alert('कृपया सही किलोमीटर दर्ज करें!');
+                return;
+            }
+            let total = km * rate;
+            document.getElementById('fareAmount').innerText = '₹' + total + ' (लगभग)';
+            
+            let msg = `नमस्ते Govind Taxi! मैंने फेयर कैलकुलेटर पर चेक किया है:%0A- दूरी: ${km} KM%0A- अनुमानित किराया: ₹${total}%0Aकृपया बुकिंग की पुष्टि करें।`;
+            document.getElementById('waConfirmBtn').href = `https://wa.me/919720298593?text=${msg}`;
+            
+            document.getElementById('resultBox').style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>
