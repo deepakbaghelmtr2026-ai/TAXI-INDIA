@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>आगरा ताज महल सेम-डे टूर कैब | Govind Taxi Booking</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #000000;
+            --card-dark: #121212;
+            --accent-gold: #FFD700;
+            --brand-green: #00D26A;
+            --neon-blue: #00F0FF;
+            --border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
+        body { background-color: var(--bg-dark); color: #FFFFFF; overflow-x: hidden; padding-bottom: 80px; }
+
+        /* Top Nav */
+        .top-nav {
+            position: sticky; top: 0; z-index: 1000;
+            background: rgba(18, 18, 18, 0.95); backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color); padding: 15px 20px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .brand-logo { font-size: 16px; font-weight: 900; color: var(--accent-gold); text-decoration: none; }
+        .back-btn { color: var(--neon-blue); text-decoration: none; font-size: 14px; font-weight: bold; }
+
+        /* Hero Banner */
+        .hero-banner {
+            padding: 30px 15px; text-align: center;
+            background: linear-gradient(180deg, #181818 0%, #000 100%);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .hero-banner h1 { font-size: 24px; color: var(--accent-gold); margin-bottom: 8px; }
+        .hero-banner p { font-size: 13px; color: #DDD; }
+
+        /* Packages Section */
+        .container { padding: 20px 15px; max-width: 500px; margin: 0 auto; }
+        .section-title { font-size: 18px; color: var(--neon-blue); margin-bottom: 15px; text-align: center; font-weight: bold; }
+
+        .pkg-card {
+            background: var(--card-dark); border: 1px solid var(--border-color);
+            border-radius: 18px; padding: 18px; margin-bottom: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+        .pkg-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; margin-bottom: 12px; }
+        .pkg-title { font-size: 16px; font-weight: bold; color: #FFF; }
+        .pkg-price { font-size: 16px; font-weight: 900; color: var(--brand-green); }
+
+        .spot-list { list-style: none; margin-bottom: 15px; }
+        .spot-list li { font-size: 13px; color: #CCC; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        .spot-list li i { color: var(--accent-gold); font-size: 12px; }
+
+        .btn-book {
+            display: block; width: 100%; text-align: center; background: linear-gradient(135deg, var(--brand-green), #008f47);
+            color: #FFF; padding: 12px; border-radius: 25px; text-decoration: none; font-weight: bold; font-size: 14px;
+        }
+
+        /* Fixed Bottom Bar */
+        .fixed-bottom {
+            position: fixed; bottom: 0; left: 0; width: 100%; background: #121212;
+            border-top: 1px solid var(--border-color); display: flex; padding: 12px; gap: 10px; z-index: 1000;
+        }
+        .fixed-bottom a { flex: 1; text-align: center; padding: 12px; border-radius: 30px; font-weight: bold; font-size: 13px; text-decoration: none; color: #fff; }
+        .btn-call { background: #007BFF; }
+        .btn-wa { background: #25D366; }
+    </style>
+</head>
+<body>
+
+    <!-- TOP NAV -->
+    <div class="top-nav">
+        <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> होम पेज</a>
+        <a href="index.html" class="brand-logo"><i class="fa-solid fa-car-side"></i> GOVIND TAXI</a>
+    </div>
+
+    <!-- HERO BANNER -->
+    <div class="hero-banner">
+        <h1>🕌 आगरा ताज महल सेम-डे टूर</h1>
+        <p>मथुरा/दिल्ली से आगरा की आरामदायक VIP एक्सप्रेस-वे राइड</p>
+    </div>
+
+    <div class="container">
+        <div class="section-title">आगरा स्पेशल दर्शन पैकेज</div>
+
+        <!-- PACKAGE 1 -->
+        <div class="pkg-card">
+            <div class="pkg-header">
+                <div class="pkg-title">1. मथुरा से आगरा सेम-डे टूर</div>
+                <div class="pkg-price">₹2,800 से शुरू</div>
+            </div>
+            <ul class="spot-list">
+                <li><i class="fa-solid fa-location-dot"></i> विश्व प्रसिद्ध ताज महल दर्शन</li>
+                <li><i class="fa-solid fa-location-dot"></i> ऐतिहासिक आगरा किला (Agra Fort)</li>
+                <li><i class="fa-solid fa-location-dot"></i> मेहताब बाग (ताज महल का बैक व्यू)</li>
+                <li><i class="fa-solid fa-location-dot"></i> प्रसिद्ध पेठा मार्केट स्टॉप</li>
+            </ul>
+            <a href="https://wa.me/919720298593?text=नमस्ते Govind Taxi! मुझे मथुरा से आगरा सेम-डे टूर पैकेज बुक करना है।" class="btn-book">
+                <i class="fa-brands fa-whatsapp"></i> रेट जानें & बुक करें
+            </a>
+        </div>
+
+        <!-- PACKAGE 2 -->
+        <div class="pkg-card">
+            <div class="pkg-header">
+                <div class="pkg-title">2. आगरा + फतेहपुर सीकरी स्पेशल</div>
+                <div class="pkg-price">₹3,500 से शुरू</div>
+            </div>
+            <ul class="spot-list">
+                <li><i class="fa-solid fa-location-dot"></i> ताज महल & आगरा किला</li>
+                <li><i class="fa-solid fa-location-dot"></i> फतेहपुर सीकरी (बुलंद दरवाजा)</li>
+                <li><i class="fa-solid fa-location-dot"></i> शेख सलीम चिश्ती दरगाह</li>
+            </ul>
+            <a href="https://wa.me/919720298593?text=नमस्ते Govind Taxi! मुझे आगरा + फतेहपुर सीकरी पैकेज बुक करना है।" class="btn-book">
+                <i class="fa-brands fa-whatsapp"></i> रेट जानें & बुक करें
+            </a>
+        </div>
+    </div>
+
+    <!-- FIXED BOTTOM BAR -->
+    <div class="fixed-bottom">
+        <a href="tel:9720298593" class="btn-call"><i class="fa-solid fa-phone"></i> डायरेक्ट कॉल</a>
+        <a href="https://wa.me/919720298593?text=नमस्ते Govind Taxi! मुझे आगरा कैब बुकिंग की जानकारी चाहिए।" class="btn-wa"><i class="fa-brands fa-whatsapp"></i> व्हाट्सएप पूछताछ</a>
+    </div>
+
+</body>
+</html>
+  
