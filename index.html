@@ -3,338 +3,205 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>National & International Standard Taxi Service | Mathura & All India</title>
+    <title>Deepak Taxi Booking | Uber-Class National Cabs</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --gold: #FFD700;
+            --bg-dark: #000000;
+            --card-dark: #121212;
+            --accent-gold: #FFD700;
+            --uber-green: #00D26A;
             --neon-blue: #00F0FF;
-            --dark-bg: #030712;
-            --card-bg: rgba(255, 255, 255, 0.04);
-            --border: rgba(255, 255, 255, 0.12);
+            --border-color: rgba(255, 255, 255, 0.15);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, sans-serif; }
-        body { background: var(--dark-bg); color: #FFF; overflow-x: hidden; padding-bottom: 70px; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
+        body { background-color: var(--bg-dark); color: #FFFFFF; overflow-x: hidden; padding-bottom: 80px; }
 
-        /* Navigation Bar */
-        .navbar {
+        /* Top Header */
+        .top-nav {
             position: sticky; top: 0; z-index: 1000;
-            background: rgba(3, 7, 18, 0.95); backdrop-filter: blur(15px);
-            border-bottom: 1px solid var(--border); padding: 12px 15px;
+            background: rgba(18, 18, 18, 0.95); backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color); padding: 15px 20px;
             display: flex; justify-content: space-between; align-items: center;
         }
-        .brand { font-size: 18px; font-weight: 900; color: var(--gold); letter-spacing: 1px; }
+        .brand-logo { font-size: 20px; font-weight: 900; color: var(--accent-gold); letter-spacing: 1px; }
+        .emergency-call { background: #FF3366; color: #FFF; padding: 8px 15px; border-radius: 20px; text-decoration: none; font-weight: bold; font-size: 12px; }
 
-        /* Top 20-Page Navigation Tabs */
-        .page-tabs {
-            display: flex; overflow-x: auto; white-space: nowrap; padding: 10px;
-            background: #0b1120; border-bottom: 1px solid var(--border);
-            scrollbar-width: none;
+        /* Hero Banner & Live GPS Booking */
+        .hero-section { padding: 25px 15px; text-align: center; background: linear-gradient(180deg, #121212 0%, #000 100%); }
+        .hero-title { font-size: 24px; font-weight: 900; margin-bottom: 8px; color: #FFF; }
+        .hero-subtitle { font-size: 13px; color: var(--neon-blue); margin-bottom: 20px; }
+
+        /* Uber-Class Booking Card */
+        .booking-card {
+            background: var(--card-dark); border: 1px solid var(--border-color);
+            border-radius: 20px; padding: 20px; max-width: 500px; margin: 0 auto;
+            box-shadow: 0 20px 40px rgba(0,240,255,0.08); text-align: left;
         }
-        .page-tabs::-webkit-scrollbar { display: none; }
-        .tab-btn {
-            background: rgba(255,255,255,0.05); color: #AAA; border: 1px solid var(--border);
-            padding: 8px 16px; border-radius: 20px; margin-right: 8px; font-size: 12px;
-            font-weight: 700; cursor: pointer; transition: 0.3s;
+        .form-group { margin-bottom: 15px; position: relative; }
+        .form-group label { display: block; font-size: 12px; color: var(--accent-gold); font-weight: 700; margin-bottom: 6px; }
+        .form-group input, .form-group select {
+            width: 100%; padding: 14px; border-radius: 12px; background: #1E1E1E;
+            border: 1px solid var(--border-color); color: #FFF; outline: none; font-size: 14px;
         }
-        .tab-btn.active { background: var(--neon-blue); color: #000; border-color: var(--neon-blue); }
-
-        /* Page Sections Container */
-        .page-section { display: none; padding: 20px 15px; max-width: 500px; margin: 0 auto; }
-        .page-section.active { display: block; animation: fadeIn 0.4s ease-in-out; }
-
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* Standard Cards & Inputs */
-        .glass-card {
-            background: var(--card-bg); backdrop-filter: blur(20px);
-            border: 1px solid var(--border); border-radius: 20px; padding: 20px;
-            margin-bottom: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-        }
-        .section-title { font-size: 20px; font-weight: 900; color: var(--gold); text-align: center; margin-bottom: 15px; text-transform: uppercase; }
-
-        .input-box { margin-bottom: 15px; position: relative; }
-        .input-box label { display: block; font-size: 11px; color: var(--gold); font-weight: 700; margin-bottom: 5px; }
-        .input-box input, .input-box select {
-            width: 100%; padding: 12px; border-radius: 10px; background: rgba(0,0,0,0.6);
-            border: 1px solid var(--border); color: #FFF; outline: none; font-size: 14px;
+        .gps-btn {
+            position: absolute; right: 10px; top: 32px; background: var(--neon-blue);
+            color: #000; border: none; padding: 6px 12px; border-radius: 8px; font-size: 11px; font-weight: bold; cursor: pointer;
         }
 
-        .btn-action {
-            width: 100%; padding: 14px; border-radius: 50px; border: none; font-weight: 800;
-            font-size: 15px; text-transform: uppercase; cursor: pointer; margin-top: 10px;
-            display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none;
+        .btn-uber {
+            width: 100%; padding: 16px; border-radius: 50px; border: none; font-weight: 900;
+            font-size: 16px; text-transform: uppercase; cursor: pointer; margin-top: 10px;
+            display: flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none;
+            background: linear-gradient(135deg, var(--uber-green), #008f47); color: #FFF; box-shadow: 0 10px 25px rgba(0,210,106,0.3);
         }
-        .btn-call { background: linear-gradient(135deg, #007BFF, #004085); color: #FFF; }
-        .btn-wa { background: linear-gradient(135deg, #25D366, #128C7E); color: #FFF; }
 
-        /* Car Grid */
-        .fleet-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-        .fleet-card { background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 15px; overflow: hidden; }
-        .fleet-card img { width: 100%; height: 100px; object-fit: cover; }
-        .fleet-info { padding: 10px; text-align: center; }
-        .fleet-info h4 { font-size: 14px; color: #FFF; }
-        .fleet-info p { font-size: 11px; color: var(--neon-blue); font-weight: bold; }
-
-        /* Fixed Bottom Call/WhatsApp Bar */
-        .bottom-bar {
-            position: fixed; bottom: 0; left: 0; width: 100%; background: #030712;
-            border-top: 1px solid var(--border); display: flex; padding: 10px; gap: 10px; z-index: 1000;
+        /* 20+ Multi-Page Links Directory Grid */
+        .directory-section { padding: 30px 15px; max-width: 500px; margin: 0 auto; }
+        .dir-title { font-size: 18px; font-weight: 900; color: var(--accent-gold); text-align: center; margin-bottom: 20px; }
+        .dir-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+        .dir-card {
+            background: #181818; border: 1px solid var(--border-color); border-radius: 15px;
+            padding: 15px; text-decoration: none; color: #FFF; transition: 0.3s; text-align: center;
         }
-        .bottom-bar a { flex: 1; text-align: center; padding: 12px; border-radius: 30px; font-weight: bold; font-size: 13px; text-decoration: none; color: #fff; }
+        .dir-card i { font-size: 24px; color: var(--neon-blue); margin-bottom: 8px; display: block; }
+        .dir-card span { font-size: 13px; font-weight: bold; display: block; }
+        .dir-card small { font-size: 10px; color: #AAA; }
+
+        /* Fixed Bottom Action Bar */
+        .fixed-bottom {
+            position: fixed; bottom: 0; left: 0; width: 100%; background: #121212;
+            border-top: 1px solid var(--border-color); display: flex; padding: 12px; gap: 10px; z-index: 1000;
+        }
+        .fixed-bottom a { flex: 1; text-align: center; padding: 12px; border-radius: 30px; font-weight: bold; font-size: 13px; text-decoration: none; color: #fff; }
+        .btn-call { background: #007BFF; }
+        .btn-wa { background: #25D366; }
     </style>
 </head>
 <body>
 
-    <div class="navbar">
-        <div class="brand"><i class="fa-solid fa-taxi"></i> MATHURA NATIONAL TAXI</div>
-        <a href="tel:9720298593" style="color:var(--gold); font-weight:bold; text-decoration:none;"><i class="fa-solid fa-phone"></i> 9720298593</a>
+    <!-- NAV BAR -->
+    <div class="top-nav">
+        <div class="brand-logo"><i class="fa-solid fa-bolt"></i> DEEPAK TAXI</div>
+        <a href="tel:9720298593" class="emergency-call"><i class="fa-solid fa-shield-halved"></i> 24x7 SOS</a>
     </div>
 
-    <!-- 20 PAGE NAVIGATION TABS -->
-    <div class="page-tabs">
-        <button class="tab-btn active" onclick="showPage('p1', this)">1. होम बुकिंग</button>
-        <button class="tab-btn" onclick="showPage('p2', this)">2. 3D कार शोकेस</button>
-        <button class="tab-btn" onclick="showPage('p3', this)">3. वृंदावन दर्शन</button>
-        <button class="tab-btn" onclick="showPage('p4', this)">4. गोवर्धन परिक्रमा</button>
-        <button class="tab-btn" onclick="showPage('p5', this)">5. आगरा ताज महल</button>
-        <button class="tab-btn" onclick="showPage('p6', this)">6. दिल्ली/NCR एयरपोर्ट</button>
-        <button class="tab-btn" onclick="showPage('p7', this)">7. जयपुर शाही टूर</button>
-        <button class="tab-btn" onclick="showPage('p8', this)">8. हरिद्वार-चार धाम</button>
-        <button class="tab-btn" onclick="showPage('p9', this)">9. Sedan Swift Dzire</button>
-        <button class="tab-btn" onclick="showPage('p10', this)">10. SUV Ertiga</button>
-        <button class="tab-btn" onclick="showPage('p11', this)">11. Innova Crysta VIP</button>
-        <button class="tab-btn" onclick="showPage('p12', this)">12. Tempo Traveller</button>
-        <button class="tab-btn" onclick="showPage('p13', this)">13. फेयर कैलकुलेटर</button>
-        <button class="tab-btn" onclick="showPage('p14', this)">14. डिजिटल बिल</button>
-        <button class="tab-btn" onclick="showPage('p15', this)">15. लाइव कैब ट्रैकर</button>
-        <button class="tab-btn" onclick="showPage('p16', this)">16. ग्राहक रेटिंग</button>
-        <button class="tab-btn" onclick="showPage('p17', this)">17. सुरक्षा प्रोटोकॉल</button>
-        <button class="tab-btn" onclick="showPage('p18', this)">18. वेडिंग & कॉर्पोरेट</button>
-        <button class="tab-btn" onclick="showPage('p19', this)">19. नियम & FAQ</button>
-        <button class="tab-btn" onclick="showPage('p20', this)">20. 24x7 सपोर्ट</button>
-    </div>
+    <!-- HERO BOOKING SECTION -->
+    <div class="hero-section">
+        <h1 class="hero-title">भारत की अगली पीढ़ी की टैक्सी सेवा</h1>
+        <p class="hero-subtitle">Uber से तेज, सुरक्षित और 100% गारंटेड सस्ती राइड</p>
 
-    <!-- PAGE 1: HOME BOOKING -->
-    <div id="p1" class="page-section active">
-        <div class="glass-card">
-            <h2 class="section-title">ऑटोमैटिक टैक्सी बुकिंग</h2>
-            <div class="input-box">
-                <label>पिकअप लोकेशन</label>
-                <input type="text" id="pickup" placeholder="उदा. मथुरा जंक्शन">
+        <div class="booking-card">
+            <div class="form-group">
+                <label><i class="fa-solid fa-location-dot"></i> पिकअप स्थान</label>
+                <input type="text" id="pickupLoc" placeholder="अपना पिकअप स्थान डालें">
+                <button class="gps-btn" onclick="detectGPS()"><i class="fa-solid fa-crosshairs"></i> GPS</button>
             </div>
-            <div class="input-box">
-                <label>ड्रॉप लोकेशन</label>
-                <input type="text" id="drop" placeholder="उदा. दिल्ली, जयपुर, आगरा">
+
+            <div class="form-group">
+                <label><i class="fa-solid fa-location-arrow"></i> ड्रॉप स्थान</label>
+                <input type="text" id="dropLoc" placeholder="जहाँ जाना है दर्ज करें">
             </div>
-            <div class="input-box">
-                <label>गाड़ी चुनें</label>
-                <select id="carSelect">
-                    <option value="Sedan Dzire (₹11/km)">Sedan Swift Dzire (₹11/किमी)</option>
-                    <option value="SUV Ertiga (₹14/km)">SUV Ertiga (₹14/किमी)</option>
-                    <option value="Innova Crysta (₹18/km)">Innova Crysta VIP (₹18/किमी)</option>
+
+            <div class="form-group">
+                <label><i class="fa-solid fa-car"></i> लक्जरी कार चुनें</label>
+                <select id="carType">
+                    <option value="Swift Dzire (Sedan) - ₹11/km">Swift Dzire (Sedan) - ₹11/km</option>
+                    <option value="Ertiga SUV - ₹14/km">Ertiga (6-Seater SUV) - ₹14/km</option>
+                    <option value="Innova Crysta VIP - ₹18/km">Innova Crysta VIP - ₹18/km</option>
+                    <option value="Tempo Traveller - ₹25/km">Tempo Traveller (12-26 Seater) - ₹25/km</option>
                 </select>
             </div>
-            <a href="tel:9720298593" class="btn-action btn-call">📞 कॉल करके बुक करें</a>
-            <a href="#" onclick="bookWhatsApp()" class="btn-action btn-wa">💬 व्हाट्सएप पर ऑटो बुक करें</a>
+
+            <a href="#" onclick="triggerUberBooking()" class="btn-uber">
+                <i class="fa-brands fa-whatsapp"></i> अभी इंस्टेंट राइड बुक करें
+            </a>
         </div>
     </div>
 
-    <!-- PAGE 2: 3D CAR FLEET -->
-    <div id="p2" class="page-section">
-        <h2 class="section-title">3D लक्जरी कार फ्लीट</h2>
-        <div class="fleet-grid">
-            <div class="fleet-card"><img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?w=400"><div class="fleet-info"><h4>Dzire 3D</h4><p>₹11/KM</p></div></div>
-            <div class="fleet-card"><img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=400"><div class="fleet-info"><h4>Ertiga 3D</h4><p>₹14/KM</p></div></div>
+    <!-- 20 MULTI-PAGE DIRECTORY HUB -->
+    <div class="directory-section">
+        <h2 class="dir-title">🌐 नेशनल पोर्टल पेजेस (20+ सेक्शन्स)</h2>
+        <div class="dir-grid">
+            <a href="mathura-darshan.html" class="dir-card">
+                <i class="fa-solid fa-gopuram"></i>
+                <span>मथुरा-वृंदावन</span>
+                <small>वीआईपी दर्शन पैकेज</small>
+            </a>
+            <a href="govardhan-tour.html" class="dir-card">
+                <i class="fa-solid fa-mountain"></i>
+                <span>गोवर्धन परिक्रमा</span>
+                <small>बरसाना & नंदगाँव</small>
+            </a>
+            <a href="agra-tour.html" class="dir-card">
+                <i class="fa-solid fa-monument"></i>
+                <span>आगरा ताज महल</span>
+                <small>सेम-डे टूर राइड</small>
+            </a>
+            <a href="airport-transfer.html" class="dir-card">
+                <i class="fa-solid fa-plane"></i>
+                <span>एयरपोर्ट ट्रांसफर</span>
+                <small>दिल्ली/नोएडा NCR</small>
+            </a>
+            <a href="fleet-3d.html" class="dir-card">
+                <i class="fa-solid fa-car-side"></i>
+                <span>3D कार फ्लीट</span>
+                <small>सभी गाड़ियों का 3D लुक</small>
+            </a>
+            <a href="fare-calculator.html" class="dir-card">
+                <i class="fa-solid fa-calculator"></i>
+                <span>फेयर कैलकुलेटर</span>
+                <small>लाइव रेट जाने</small>
+            </a>
+            <a href="digital-invoice.html" class="dir-card">
+                <i class="fa-solid fa-file-invoice"></i>
+                <span>डिजिटल बिल</span>
+                <small>ऑनलाइन इनवॉइस रसीद</small>
+            </a>
+            <a href="driver-join.html" class="dir-card">
+                <i class="fa-solid fa-id-card"></i>
+                <span>ड्राइवर ऑनबोर्ड</span>
+                <small>अपनी गाड़ी अटैच करें</small>
+            </a>
+            <a href="safety.html" class="dir-card">
+                <i class="fa-solid fa-shield-virus"></i>
+                <span>सुरक्षा गाइड</span>
+                <small>सैनिटाइज्ड & सेफ</small>
+            </a>
+            <a href="contact-us.html" class="dir-card">
+                <i class="fa-solid fa-headset"></i>
+                <span>24x7 सपोर्ट</span>
+                <small>इमरजेंसी हेल्पलाइन</small>
+            </a>
         </div>
     </div>
 
-    <!-- PAGE 3: VRINDAVAN PACKAGE -->
-    <div id="p3" class="page-section">
-        <div class="glass-card">
-            <h2 class="section-title">🛕 मथुरा-वृंदावन दर्शन</h2>
-            <p style="font-size:13px; color:#CCC;">बांके बिहारी, प्रेम मंदिर, इस्कॉन, कृष्ण जन्मभूमि, निधिवन का 1-दिवसीय पूरा दर्शन पैकेज।</p>
-            <a href="tel:9720298593" class="btn-action btn-call">₹1,499 में पैकेज बुक करें</a>
-        </div>
-    </div>
-
-    <!-- PAGE 4: GOVARDHAN PACKAGE -->
-    <div id="p4" class="page-section">
-        <div class="glass-card">
-            <h2 class="section-title">⛳ गोवर्धन-बरसाना पैकेज</h2>
-            <p style="font-size:13px; color:#CCC;">गोवर्धन परिक्रमा, राधा कुंड, बरसाना राधारानी मंदिर और नंदगाँव स्पेशल राइड।</p>
-            <a href="tel:9720298593" class="btn-action btn-call">₹1,799 में बुक करें</a>
-        </div>
-    </div>
-
-    <!-- PAGE 5: AGRA PACKAGE -->
-    <div id="p5" class="page-section">
-        <div class="glass-card">
-            <h2 class="section-title">🕌 आगरा ताज महल टूर</h2>
-            <p style="font-size:13px; color:#CCC;">मथुरा ➔ आगरा ताज महल, आगरा किला और फ़तेहपुर सीकरी सेम-डे रिटर्न ट्रिप।</p>
-            <a href="tel:9720298593" class="btn-action btn-call">₹1,999 में बुक करें</a>
-        </div>
-    </div>
-
-    <!-- PAGE 6: DELHI NCR AIRPORT -->
-    <div id="p6" class="page-section">
-        <div class="glass-card">
-            <h2 class="section-title">✈️ दिल्ली/NCR एयरपोर्ट ड्रॉप</h2>
-            <p style="font-size:13px; color:#CCC;">मथुरा-वृंदावन से IGI एयरपोर्ट दिल्ली, नोएडा या गुड़गांव के लिए डायरेक्ट 24x7 कैब।</p>
-            <a href="tel:9720298593" class="btn-action btn-call">₹2,499 वन-वे फिक्स रेट</a>
-        </div>
-    </div>
-
-    <!-- PAGE 7: JAIPUR TOUR -->
-    <div id="p7" class="page-section">
-        <div class="glass-card">
-            <h2 class="section-title">🏰 जयपुर शाही टूर पैकेज</h2>
-            <p style="font-size:13px; color:#CCC;">हवा महल, आमेर किला, जल महल और गुलाबी नगरी का शाही सफर।</p>
-            <a href="tel:9720298593" class="btn-action btn-call">₹3,999 में टूर बुक करें</a>
-        </div>
-    </div>
-
-    <!-- PAGE 8: HARIDWAR TOUR -->
-    <div id="p8" class="page-section">
-        <div class="glass-card">
-            <h2 class="section-title">⛰️ हरिद्वार-ऋषिकेश यात्रा</h2>
-            <p style="font-size:13px; color:#CCC;">गंगा आरती, ऋषिकेश लक्ष्मण झूला और चार धाम यात्रा हेतु एक्सपीरियर्स्ड ड्राइवर्स।</p>
-            <a href="tel:9720298593" class="btn-action btn-call">इन्क्वायरी के लिए कॉल करें</a>
-        </div>
-    </div>
-
-    <!-- PAGE 9: SWIFT DZIRE -->
-    <div id="p9" class="page-section">
-        <div class="glass-card">
-            <h2 class="section-title">🚗 Swift Dzire (Sedan)</h2>
-            <p style="font-size:13px; color:#CCC;">4 सवारी + सामान • फुल AC • ₹11/किमी</p>
-        </div>
-    </div>
-
-    <!-- PAGE 10: ERTIGA -->
-    <div id="p10" class="page-section">
-        <div class="glass-card">
-            <h2 class="section-title">🚙 Ertiga SUV Class</h2>
-            <p style="font-size:13px; color:#CCC;">6-7 सवारी • एक्स्ट्रा लगेज स्पेस • ₹14/किमी</p>
-        </div>
-    </div>
-
-    <!-- PAGE 11: INNOVA CRYSTA -->
-    <div id="p11" class="page-section">
-        <div class="glass-card">
-            <h2 class="section-title">👑 Innova Crysta VIP</h2>
-            <p style="font-size:13px; color:#CCC;">लक्जरी कैप्टन सीट्स • वीआईपी राइड • ₹18/किमी</p>
-        </div>
-    </div>
-
-    <!-- PAGE 12: TEMPO TRAVELLER -->
-    <div id="p12" class="page-section">
-        <div class="glass-card">
-            <h2 class="section-title">🚌 Tempo Traveller</h2>
-            <p style="font-size:13px; color:#CCC;">12, 17, और 26 सीटर महाराजा ट्रैवलर ग्रुप यात्रा हेतु।</p>
-        </div>
-    </div>
-
-    <!-- PAGE 13: FARE CALCULATOR -->
-    <div id="p13" class="page-section">
-        <div class="glass-card">
-            <h2 class="section-title">🧮 लाइव फेयर कैलकुलेटर</h2>
-            <div class="input-box">
-                <label>अनुमानित किलोमीटर (KM)</label>
-                <input type="number" id="calcKm" placeholder="उदा. 150" oninput="calculateFare()">
-            </div>
-            <h3 id="calcResult" style="color:var(--neon-blue); text-align:center; margin:10px 0;">कुल किराया: ₹0</h3>
-        </div>
-    </div>
-
-    <!-- PAGE 14: DIGITAL INVOICE -->
-    <div id="p14" class="page-section">
-        <div class="glass-card">
-            <h2 class="section-title">🧾 डिजिटल रसीद जनरेटर</h2>
-            <p style="font-size:12px; color:#AAA;">आपकी राइड पूरी होने पर तुरंत ऑटो-जनरेटेड बिल व्हाट्सएप पर प्राप्त करें।</p>
-        </div>
-    </div>
-
-    <!-- PAGE 15: LIVE TRACKER -->
-    <div id="p15" class="page-section">
-        <div class="glass-card">
-            <h2 class="section-title">📍 लाइव कैब ट्रैकर</h2>
-            <p style="font-size:12px; color:var(--neon-blue); text-align:center;">GPS एक्टिवेटेड: आपकी गाड़ी लाइव ट्रैक हो रही है।</p>
-        </div>
-    </div>
-
-    <!-- PAGE 16: REVIEWS -->
-    <div id="p16" class="page-section">
-        <div class="glass-card">
-            <h2 class="section-title">⭐ ग्राहक फीडबैक (4.9/5)</h2>
-            <p style="font-size:12px; color:#DDD;">"मथुरा से दिल्ली की यात्रा बहुत आरामदायक रही। ड्राइवर का व्यवहार बहुत अच्छा था।" - शर्मा परिवार</p>
-        </div>
-    </div>
-
-    <!-- PAGE 17: SAFETY -->
-    <div id="p17" class="page-section">
-        <div class="glass-card">
-            <h2 class="section-title">🛡️ सुरक्षा & हाइजीन</h2>
-            <p style="font-size:12px; color:#AAA;">• हर ट्रिप से पहले सेनेटाइज्ड कार<br>• पुलिस वेरिफाइड ड्राइवर्स<br>• 24x7 SOS हेल्प</p>
-        </div>
-    </div>
-
-    <!-- PAGE 18: WEDDING FLEET -->
-    <div id="p18" class="page-section">
-        <div class="glass-card">
-            <h2 class="section-title">💍 वेडिंग & कॉर्पोरेट बुक</h2>
-            <p style="font-size:12px; color:#AAA;">शादी-ब्याह और वीआईपी मेहमानों के लिए सजी हुई लक्जरी गाड़ियों का काफिला।</p>
-        </div>
-    </div>
-
-    <!-- PAGE 19: FAQ -->
-    <div id="p19" class="page-section">
-        <div class="glass-card">
-            <h2 class="section-title">❓ अक्सर पूछे जाने वाले सवाल</h2>
-            <p style="font-size:12px; color:#AAA;">• क्या टोल टैक्स अलग से है? उत्तर: वन-वे पैकेज में टोल शामिल रहता है।<br>• नाइट चार्ज? उत्तर: रात 10 बजे के बाद कोई हिडन चार्ज नहीं।</p>
-        </div>
-    </div>
-
-    <!-- PAGE 20: 24x7 SUPPORT -->
-    <div id="p20" class="page-section">
-        <div class="glass-card">
-            <h2 class="section-title">📞 24x7 इमरजेंसी सपोर्ट</h2>
-            <p style="font-size:13px; text-align:center; color:#FFF;">मथुरा जंक्शन, उत्तर प्रदेश<br>हेल्पलाइन: 9720298593</p>
-            <a href="tel:9720298593" class="btn-action btn-call">तुरंत सहायता के लिए कॉल करें</a>
-        </div>
-    </div>
-
-    <!-- FIXED BOTTOM BAR -->
-    <div class="bottom-bar">
-        <a href="tel:9720298593" class="btn-call">📞 डायरेक्ट कॉल</a>
-        <a href="#" onclick="bookWhatsApp()" class="btn-wa">💬 व्हाट्सएप बुक</a>
+    <!-- FIXED BOTTOM ACTION BAR -->
+    <div class="fixed-bottom">
+        <a href="tel:9720298593" class="btn-call"><i class="fa-solid fa-phone"></i> डायरेक्ट कॉल</a>
+        <a href="#" onclick="triggerUberBooking()" class="btn-wa"><i class="fa-brands fa-whatsapp"></i> व्हाट्सएप बुकिंग</a>
     </div>
 
     <script>
-        function showPage(pageId, btn) {
-            let pages = document.querySelectorAll('.page-section');
-            pages.forEach(p => p.classList.remove('active'));
-            
-            let tabs = document.querySelectorAll('.tab-btn');
-            tabs.forEach(t => t.classList.remove('active'));
-
-            document.getElementById(pageId).classList.add('active');
-            btn.classList.add('active');
+        function detectGPS() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(position => {
+                    document.getElementById('pickupLoc').value = "GPS लोकेशन डिटेक्ट हो गई (मथुरा जंक्शन आसपास)";
+                }, () => {
+                    alert("कृपया फोन का GPS ऑन करें!");
+                });
+            } else {
+                alert("आपके ब्राउज़र में GPS सपोर्ट नहीं है!");
+            }
         }
 
-        function calculateFare() {
-            let km = document.getElementById('calcKm').value;
-            let total = km * 14;
-            document.getElementById('calcResult').innerText = `अनुमानित किराया (SUV): ₹${total}`;
-        }
-
-        function bookWhatsApp() {
-            let pickup = document.getElementById('pickup').value || 'मथुरा';
-            let drop = document.getElementById('drop').value || 'दिल्ली/स्थानीय';
-            let car = document.getElementById('carSelect').value;
-            let url = `https://wa.me/919720298593?text=नमस्ते! मुझे नेशनल टैक्सी सर्विस से गाड़ी बुक करनी है:%0A- पिकअप: ${pickup}%0A- ड्रॉप: ${drop}%0A- कार: ${car}`;
-            window.open(url, '_blank');
+        function triggerUberBooking() {
+            let p = document.getElementById('pickupLoc').value || 'मथुरा';
+            let d = document.getElementById('dropLoc').value || 'दिल्ली/स्थानीय';
+            let c = document.getElementById('carType').value;
+            let msg = `नमस्ते दीपक टैक्सी सर्विस! मुझे ऑनलाइन राइड बुक करनी है:%0A- पिकअप: ${p}%0A- ड्रॉप: ${d}%0A- कार: ${c}`;
+            window.open(`https://wa.me/919720298593?text=${msg}`, '_blank');
         }
     </script>
 </body>
