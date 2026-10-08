@@ -3,15 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Govind Taxi Booking | GOVIND TAXI BOOKING 
-        Cabs</title>
+    <title>Govind Taxi Booking | National & Regional Cabs</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --bg-dark: #000000;
             --card-dark: #121212;
             --accent-gold: #FFD700;
-            --uber-green: #00D26A;
+            --brand-green: #00D26A;
             --neon-blue: #00F0FF;
             --border-color: rgba(255, 255, 255, 0.15);
         }
@@ -26,7 +25,7 @@
             border-bottom: 1px solid var(--border-color); padding: 15px 20px;
             display: flex; justify-content: space-between; align-items: center;
         }
-        .brand-logo { font-size: 20px; font-weight: 900; color: var(--accent-gold); letter-spacing: 1px; }
+        .brand-logo { font-size: 18px; font-weight: 900; color: var(--accent-gold); letter-spacing: 1px; }
         .emergency-call { background: #FF3366; color: #FFF; padding: 8px 15px; border-radius: 20px; text-decoration: none; font-weight: bold; font-size: 12px; }
 
         /* Hero Banner & Live GPS Booking */
@@ -34,7 +33,7 @@
         .hero-title { font-size: 24px; font-weight: 900; margin-bottom: 8px; color: #FFF; }
         .hero-subtitle { font-size: 13px; color: var(--neon-blue); margin-bottom: 20px; }
 
-        /* Uber-Class Booking Card */
+        /* VIP Booking Card */
         .booking-card {
             background: var(--card-dark); border: 1px solid var(--border-color);
             border-radius: 20px; padding: 20px; max-width: 500px; margin: 0 auto;
@@ -51,14 +50,14 @@
             color: #000; border: none; padding: 6px 12px; border-radius: 8px; font-size: 11px; font-weight: bold; cursor: pointer;
         }
 
-        .btn-uber {
+        .btn-govind {
             width: 100%; padding: 16px; border-radius: 50px; border: none; font-weight: 900;
             font-size: 16px; text-transform: uppercase; cursor: pointer; margin-top: 10px;
             display: flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none;
-            background: linear-gradient(135deg, var(--uber-green), #008f47); color: #FFF; box-shadow: 0 10px 25px rgba(0,210,106,0.3);
+            background: linear-gradient(135deg, var(--brand-green), #008f47); color: #FFF; box-shadow: 0 10px 25px rgba(0,210,106,0.3);
         }
 
-        /* 20+ Multi-Page Links Directory Grid */
+        /* 20+ Multi-Page Directory Grid */
         .directory-section { padding: 30px 15px; max-width: 500px; margin: 0 auto; }
         .dir-title { font-size: 18px; font-weight: 900; color: var(--accent-gold); text-align: center; margin-bottom: 20px; }
         .dir-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
@@ -84,14 +83,14 @@
 
     <!-- NAV BAR -->
     <div class="top-nav">
-        <div class="brand-logo"><i class="fa-solid fa-bolt"></i> DEEPAK TAXI</div>
+        <div class="brand-logo"><i class="fa-solid fa-car-side"></i> GOVIND TAXI BOOKING</div>
         <a href="tel:9720298593" class="emergency-call"><i class="fa-solid fa-shield-halved"></i> 24x7 SOS</a>
     </div>
 
     <!-- HERO BOOKING SECTION -->
     <div class="hero-section">
-        <h1 class="hero-title">भारत की अगली पीढ़ी की टैक्सी सेवा</h1>
-        <p class="hero-subtitle">Uber से तेज, सुरक्षित और 100% गारंटेड सस्ती राइड</p>
+        <h1 class="hero-title">गोविंद टैक्सी सर्विस</h1>
+        <p class="hero-subtitle">उत्तर प्रदेश और मथुरा-वृंदावन की सबसे भरोसेमंद और सुरक्षित कैब</p>
 
         <div class="booking-card">
             <div class="form-group">
@@ -115,8 +114,8 @@
                 </select>
             </div>
 
-            <a href="#" onclick="triggerUberBooking()" class="btn-uber">
-                <i class="fa-brands fa-whatsapp"></i> अभी इंस्टेंट राइड बुक करें
+            <a href="#" onclick="triggerGovindBooking()" class="btn-govind">
+                <i class="fa-brands fa-whatsapp"></i> VIP Govind Cab बुक करें
             </a>
         </div>
     </div>
@@ -181,14 +180,14 @@
     <!-- FIXED BOTTOM ACTION BAR -->
     <div class="fixed-bottom">
         <a href="tel:9720298593" class="btn-call"><i class="fa-solid fa-phone"></i> डायरेक्ट कॉल</a>
-        <a href="#" onclick="triggerUberBooking()" class="btn-wa"><i class="fa-brands fa-whatsapp"></i> व्हाट्सएप बुकिंग</a>
+        <a href="#" onclick="triggerGovindBooking()" class="btn-wa"><i class="fa-brands fa-whatsapp"></i> व्हाट्सएप बुकिंग</a>
     </div>
 
     <script>
         function detectGPS() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(position => {
-                    document.getElementById('pickupLoc').value = "GPS लोकेशन डिटेक्ट हो गई (मथुरा जंक्शन आसपास)";
+                    document.getElementById('pickupLoc').value = "GPS लोकेशन डिटेक्ट हो गई (मथुरा आसपास)";
                 }, () => {
                     alert("कृपया फोन का GPS ऑन करें!");
                 });
@@ -197,13 +196,14 @@
             }
         }
 
-        function triggerUberBooking() {
+        function triggerGovindBooking() {
             let p = document.getElementById('pickupLoc').value || 'मथुरा';
             let d = document.getElementById('dropLoc').value || 'दिल्ली/स्थानीय';
             let c = document.getElementById('carType').value;
-            let msg = `नमस्ते दीपक टैक्सी सर्विस! मुझे ऑनलाइन राइड बुक करनी है:%0A- पिकअप: ${p}%0A- ड्रॉप: ${d}%0A- कार: ${c}`;
+            let msg = `नमस्ते Govind Taxi Booking! मुझे राइड बुक करनी है:%0A- पिकअप: ${p}%0A- ड्रॉप: ${d}%0A- कार: ${c}`;
             window.open(`https://wa.me/919720298593?text=${msg}`, '_blank');
         }
     </script>
 </body>
-</html>
+                </html>
+                
