@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D कार फ्लीट & गाड़ियां | Govind Taxi Booking</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #000000;
+            --card-dark: #121212;
+            --accent-gold: #FFD700;
+            --brand-green: #00D26A;
+            --neon-blue: #00F0FF;
+            --border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
+        body { background-color: var(--bg-dark); color: #FFFFFF; overflow-x: hidden; padding-bottom: 80px; }
+
+        /* Top Nav */
+        .top-nav {
+            position: sticky; top: 0; z-index: 1000;
+            background: rgba(18, 18, 18, 0.95); backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color); padding: 15px 20px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .brand-logo { font-size: 16px; font-weight: 900; color: var(--accent-gold); text-decoration: none; }
+        .back-btn { color: var(--neon-blue); text-decoration: none; font-size: 14px; font-weight: bold; }
+
+        /* Hero Banner */
+        .hero-banner {
+            padding: 30px 15px; text-align: center;
+            background: linear-gradient(180deg, #181818 0%, #000 100%);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .hero-banner h1 { font-size: 24px; color: var(--accent-gold); margin-bottom: 8px; }
+        .hero-banner p { font-size: 13px; color: #DDD; }
+
+        .container { padding: 20px 15px; max-width: 500px; margin: 0 auto; }
+
+        .car-card {
+            background: var(--card-dark); border: 1px solid var(--border-color);
+            border-radius: 18px; padding: 18px; margin-bottom: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+        .car-icon { font-size: 40px; color: var(--neon-blue); text-align: center; margin-bottom: 10px; }
+        .car-title { font-size: 18px; font-weight: bold; color: #FFF; text-align: center; margin-bottom: 5px; }
+        .car-type { font-size: 12px; color: var(--accent-gold); text-align: center; margin-bottom: 15px; }
+
+        .car-specs { list-style: none; margin-bottom: 15px; }
+        .car-specs li { font-size: 13px; color: #CCC; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        .car-specs li i { color: var(--brand-green); font-size: 12px; }
+
+        .btn-book {
+            display: block; width: 100%; text-align: center; background: linear-gradient(135deg, var(--brand-green), #008f47);
+            color: #FFF; padding: 12px; border-radius: 25px; text-decoration: none; font-weight: bold; font-size: 14px;
+        }
+
+        /* Fixed Bottom Bar */
+        .fixed-bottom {
+            position: fixed; bottom: 0; left: 0; width: 100%; background: #121212;
+            border-top: 1px solid var(--border-color); display: flex; padding: 12px; gap: 10px; z-index: 1000;
+        }
+        .fixed-bottom a { flex: 1; text-align: center; padding: 12px; border-radius: 30px; font-weight: bold; font-size: 13px; text-decoration: none; color: #fff; }
+        .btn-call { background: #007BFF; }
+        .btn-wa { background: #25D366; }
+    </style>
+</head>
+<body>
+
+    <!-- TOP NAV -->
+    <div class="top-nav">
+        <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> होम पेज</a>
+        <a href="index.html" class="brand-logo"><i class="fa-solid fa-car-side"></i> GOVIND TAXI</a>
+    </div>
+
+    <!-- HERO BANNER -->
+    <div class="hero-banner">
+        <h1>🚘 हमारी प्रीमियम कार फ्लीट</h1>
+        <p>क्लीन, सैनिटाइज्ड और एसी गाड़ियां आपकी आरामदेह यात्रा के लिए</p>
+    </div>
+
+    <div class="container">
+
+        <!-- CAR 1 -->
+        <div class="car-card">
+            <div class="car-icon"><i class="fa-solid fa-car"></i></div>
+            <div class="car-title">Swift Dzire (Sedan)</div>
+            <div class="car-type">4 सीटर (एसी कैब)</div>
+            <ul class="car-specs">
+                <li><i class="fa-solid fa-check"></i> 4 सवारी + 1 ड्राइवर सीटिंग</li>
+                <li><i class="fa-solid fa-check"></i> 2 बड़े बैग के लिए बूट स्पेस</li>
+                <li><i class="fa-solid fa-check"></i> लोकल & आउटस्टेशन राइड्स के लिए बेस्ट</li>
+            </ul>
+            <a href="https://wa.me/919720298593?text=नमस्ते Govind Taxi! मुझे Swift Dzire बुक करनी है।" class="btn-book">
+                <i class="fa-brands fa-whatsapp"></i> Dzire बुक करें
+            </a>
+        </div>
+
+        <!-- CAR 2 -->
+        <div class="car-card">
+            <div class="car-icon"><i class="fa-solid fa-car-rear"></i></div>
+            <div class="car-title">Ertiga SUV</div>
+            <div class="car-type">6 सीटर (फैमिली एसी कार)</div>
+            <ul class="car-specs">
+                <li><i class="fa-solid fa-check"></i> 6 सवारी की आरामदायक जगह</li>
+                <li><i class="fa-solid fa-check"></i> फैमिलिया टूर और दर्शन के लिए बेस्ट</li>
+                <li><i class="fa-solid fa-check"></i> पावरफुल एसी और ज्यादा लेगरूम</li>
+            </ul>
+            <a href="https://wa.me/919720298593?text=नमस्ते Govind Taxi! मुझे Ertiga SUV बुक करनी है।" class="btn-book">
+                <i class="fa-brands fa-whatsapp"></i> Ertiga बुक करें
+            </a>
+        </div>
+
+        <!-- CAR 3 -->
+        <div class="car-card">
+            <div class="car-icon"><i class="fa-solid fa-car-side"></i></div>
+            <div class="car-title">Innova Crysta VIP</div>
+            <div class="car-type">7 सीटर VIP लक्जरी</div>
+            <ul class="car-specs">
+                <li><i class="fa-solid fa-check"></i> 6/7 सीटर प्रीमियम लक्जरी सीटिंग</li>
+                <li><i class="fa-solid fa-check"></i> एक्सप्रेस-वे और लॉन्ग टूर के लिए आरामदायक</li>
+                <li><i class="fa-solid fa-check"></i> वीआईपी राइड का शानदार अनुभव</li>
+            </ul>
+            <a href="https://wa.me/919720298593?text=नमस्ते Govind Taxi! मुझे Innova Crysta बुक करनी है।" class="btn-book">
+                <i class="fa-brands fa-whatsapp"></i> Innova बुक करें
+            </a>
+        </div>
+
+        <!-- CAR 4 -->
+        <div class="car-card">
+            <div class="car-icon"><i class="fa-solid fa-van-shuttle"></i></div>
+            <div class="car-title">Tempo Traveller</div>
+            <div class="car-type">12 - 26 सीटर ग्रुप ट्रिप</div>
+            <ul class="car-specs">
+                <li><i class="fa-solid fa-check"></i> बड़े ग्रुप, फैमिली ट्रिप व तीर्थ यात्रा के लिए</li>
+                <li><i class="fa-solid fa-check"></i> पुशबैक सीट्स & म्यूजिक सिस्टम</li>
+                <li><i class="fa-solid fa-check"></i> सबसे ज्यादा स्पेस और लगेज जगह</li>
+            </ul>
+            <a href="https://wa.me/919720298593?text=नमस्ते Govind Taxi! मुझे Tempo Traveller की जानकारी चाहिए।" class="btn-book">
+                <i class="fa-brands fa-whatsapp"></i> टेम्पो ट्रैवलर बुक करें
+            </a>
+        </div>
+
+    </div>
+
+    <!-- FIXED BOTTOM BAR -->
+    <div class="fixed-bottom">
+        <a href="tel:9720298593" class="btn-call"><i class="fa-solid fa-phone"></i> डायरेक्ट कॉल</a>
+        <a href="https://wa.me/919720298593?text=नमस्ते Govind Taxi! मुझे गाड़ियों की जानकारी चाहिए।" class="btn-wa"><i class="fa-brands fa-whatsapp"></i> व्हाट्सएप पूछताछ</a>
+    </div>
+
+</body>
+</html>
