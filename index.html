@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Govind Taxi Booking | National & Regional Cabs</title>
+    <title>Govind Taxi Booking | National & Regional VIP Cabs</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-dark: #000000;
+            --bg-dark: #070707;
             --card-dark: #121212;
             --accent-gold: #FFD700;
             --brand-green: #00D26A;
@@ -16,28 +16,79 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
-        body { background-color: var(--bg-dark); color: #FFFFFF; overflow-x: hidden; padding-bottom: 80px; }
+        body { background-color: var(--bg-dark); color: #FFFFFF; overflow-x: hidden; padding-bottom: 85px; }
 
-        /* Top Header */
+        /* AI ROBOT WELCOME BANNER */
+        .robot-welcome-box {
+            background: linear-gradient(135deg, #111e2e 0%, #0a0a14 100%);
+            border: 2px solid var(--neon-blue); border-radius: 20px;
+            padding: 15px; margin: 15px auto; max-width: 500px;
+            display: flex; align-items: center; gap: 15px;
+            box-shadow: 0 0 20px rgba(0,240,255,0.3); position: relative; overflow: hidden;
+        }
+        .robot-avatar {
+            width: 60px; height: 60px; background: rgba(0,240,255,0.1);
+            border-radius: 50%; border: 2px solid var(--neon-blue);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 30px; color: var(--neon-blue); animation: robotPulse 1.5s infinite alternate;
+        }
+        @keyframes robotPulse {
+            0% { transform: scale(1); box-shadow: 0 0 5px var(--neon-blue); }
+            100% { transform: scale(1.08); box-shadow: 0 0 20px var(--neon-blue); }
+        }
+        .robot-msg-content { flex: 1; }
+        .robot-msg-title { font-size: 13px; font-weight: 900; color: var(--accent-gold); display: flex; align-items: center; gap: 6px; }
+        .robot-msg-text { font-size: 12px; color: #FFF; margin-top: 4px; line-height: 1.4; }
+        
+        .speak-btn {
+            background: var(--neon-blue); color: #000; border: none;
+            padding: 8px 14px; border-radius: 20px; font-weight: bold; font-size: 11px;
+            cursor: pointer; display: inline-flex; align-items: center; gap: 5px; margin-top: 8px;
+        }
+
+        /* Top Header Navigation */
         .top-nav {
             position: sticky; top: 0; z-index: 1000;
-            background: rgba(18, 18, 18, 0.95); backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border-color); padding: 15px 20px;
+            background: rgba(12, 12, 12, 0.95); backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color); padding: 14px 20px;
             display: flex; justify-content: space-between; align-items: center;
         }
-        .brand-logo { font-size: 18px; font-weight: 900; color: var(--accent-gold); letter-spacing: 1px; }
-        .emergency-call { background: #FF3366; color: #FFF; padding: 8px 15px; border-radius: 20px; text-decoration: none; font-weight: bold; font-size: 12px; }
+        .brand-logo { font-size: 18px; font-weight: 900; color: var(--accent-gold); letter-spacing: 1px; display: flex; align-items: center; gap: 8px; }
+        .emergency-call { background: #FF3366; color: #FFF; padding: 8px 15px; border-radius: 20px; text-decoration: none; font-weight: bold; font-size: 12px; box-shadow: 0 0 10px rgba(255,51,102,0.5); }
 
-        /* Hero Banner & Live GPS Booking */
-        .hero-section { padding: 25px 15px; text-align: center; background: linear-gradient(180deg, #121212 0%, #000 100%); }
-        .hero-title { font-size: 24px; font-weight: 900; margin-bottom: 8px; color: #FFF; }
-        .hero-subtitle { font-size: 13px; color: var(--neon-blue); margin-bottom: 20px; }
+        /* HERO ANIMATED SECTION (Highway & Car Motion) */
+        .hero-section {
+            position: relative; padding: 15px 15px 25px 15px; text-align: center;
+            background: radial-gradient(circle at center, #1c1c28 0%, #070707 100%);
+            border-bottom: 1px solid var(--border-color); overflow: hidden;
+        }
+        .hero-title { font-size: 26px; font-weight: 900; margin-bottom: 6px; color: #FFF; text-shadow: 0 0 15px rgba(0,240,255,0.3); }
+        .hero-subtitle { font-size: 13px; color: var(--neon-blue); margin-bottom: 20px; font-weight: 600; }
 
-        /* VIP Booking Card */
+        /* Animated Road Track */
+        .road-container {
+            position: relative; width: 100%; max-width: 500px; height: 110px; margin: 0 auto 20px auto;
+            background: #1a1a1a; border-radius: 16px; border: 2px solid var(--border-color); overflow: hidden;
+            box-shadow: inset 0 0 20px #000; display: flex; align-items: center; justify-content: center;
+        }
+        .road-lines {
+            position: absolute; top: 50%; left: 0; width: 200%; height: 4px;
+            background: repeating-linear-gradient(90deg, #FFD700 0px, #FFD700 25px, transparent 25px, transparent 50px);
+            transform: translateY(-50%); animation: roadMove 1.2s linear infinite;
+        }
+        @keyframes roadMove { 0% { transform: translate(0, -50%); } 100% { transform: translate(-50px, -50%); } }
+        
+        .animated-car-icon {
+            position: relative; z-index: 2; font-size: 55px; color: var(--neon-blue);
+            filter: drop-shadow(0 10px 10px rgba(0,240,255,0.5)); animation: carBounce 0.6s infinite alternate;
+        }
+        @keyframes carBounce { 0% { transform: translateY(0px); } 100% { transform: translateY(-4px); } }
+
+        /* VIP QUICK BOOKING CARD */
         .booking-card {
             background: var(--card-dark); border: 1px solid var(--border-color);
-            border-radius: 20px; padding: 20px; max-width: 500px; margin: 0 auto;
-            box-shadow: 0 20px 40px rgba(0,240,255,0.08); text-align: left;
+            border-radius: 20px; padding: 22px; max-width: 500px; margin: 0 auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8); text-align: left;
         }
         .form-group { margin-bottom: 15px; position: relative; }
         .form-group label { display: block; font-size: 12px; color: var(--accent-gold); font-weight: 700; margin-bottom: 6px; }
@@ -57,19 +108,51 @@
             background: linear-gradient(135deg, var(--brand-green), #008f47); color: #FFF; box-shadow: 0 10px 25px rgba(0,210,106,0.3);
         }
 
-        /* 20+ Multi-Page Directory Grid */
-        .directory-section { padding: 30px 15px; max-width: 500px; margin: 0 auto; }
-        .dir-title { font-size: 18px; font-weight: 900; color: var(--accent-gold); text-align: center; margin-bottom: 20px; }
+        /* SHOWROOM CARS SHOWCASE */
+        .showroom-section { padding: 35px 15px; max-width: 500px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 25px; }
+        .section-header h2 { font-size: 20px; font-weight: 900; color: var(--accent-gold); letter-spacing: 0.5px; }
+        .section-header p { font-size: 12px; color: #AAA; margin-top: 4px; }
+
+        .car-showroom-card {
+            background: var(--card-dark); border: 1px solid var(--border-color);
+            border-radius: 20px; padding: 20px; margin-bottom: 22px; position: relative; overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+        }
+        .car-badge {
+            position: absolute; top: 15px; right: 15px; background: rgba(0,240,255,0.15);
+            border: 1px solid var(--neon-blue); color: var(--neon-blue); padding: 4px 10px;
+            border-radius: 20px; font-size: 10px; font-weight: bold;
+        }
+        .car-visual-box {
+            height: 120px; display: flex; align-items: center; justify-content: center;
+            background: radial-gradient(circle, rgba(255,215,0,0.1) 0%, transparent 70%); margin-bottom: 10px;
+        }
+        .car-visual-box i { font-size: 75px; color: #FFF; text-shadow: 0 10px 20px rgba(0,0,0,0.8); }
+        .car-info h3 { font-size: 18px; font-weight: 900; color: #FFF; margin-bottom: 4px; }
+        .car-rate-tag { font-size: 15px; font-weight: bold; color: var(--brand-green); margin-bottom: 12px; }
+        .car-features-list { list-style: none; margin-bottom: 15px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+        .car-features-list li { font-size: 11px; color: #CCC; display: flex; align-items: center; gap: 6px; }
+        .car-features-list li i { color: var(--accent-gold); }
+
+        .btn-card-book {
+            display: block; text-align: center; width: 100%; padding: 12px; border-radius: 25px;
+            background: #1E1E1E; border: 1px solid var(--border-color); color: #FFF;
+            text-decoration: none; font-weight: bold; font-size: 13px;
+        }
+
+        /* DIRECTORY HUB */
+        .directory-section { padding: 10px 15px 30px 15px; max-width: 500px; margin: 0 auto; }
         .dir-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
         .dir-card {
-            background: #181818; border: 1px solid var(--border-color); border-radius: 15px;
-            padding: 15px; text-decoration: none; color: #FFF; transition: 0.3s; text-align: center;
+            background: #141414; border: 1px solid var(--border-color); border-radius: 16px;
+            padding: 16px; text-decoration: none; color: #FFF; text-align: center;
         }
         .dir-card i { font-size: 24px; color: var(--neon-blue); margin-bottom: 8px; display: block; }
         .dir-card span { font-size: 13px; font-weight: bold; display: block; }
         .dir-card small { font-size: 10px; color: #AAA; }
 
-        /* Fixed Bottom Action Bar */
+        /* FIXED BOTTOM BAR */
         .fixed-bottom {
             position: fixed; bottom: 0; left: 0; width: 100%; background: #121212;
             border-top: 1px solid var(--border-color); display: flex; padding: 12px; gap: 10px; z-index: 1000;
@@ -79,23 +162,42 @@
         .btn-wa { background: #25D366; }
     </style>
 </head>
-<body>
+<body onclick="playRobotVoiceOnce()">
 
-    <!-- NAV BAR -->
+    <!-- TOP HEADER -->
     <div class="top-nav">
         <div class="brand-logo"><i class="fa-solid fa-car-side"></i> GOVIND TAXI BOOKING</div>
         <a href="tel:9720298593" class="emergency-call"><i class="fa-solid fa-shield-halved"></i> 24x7 SOS</a>
     </div>
 
-    <!-- HERO BOOKING SECTION -->
+    <!-- AI ROBOT VOICE ASSISTANT BANNER -->
+    <div class="robot-welcome-box">
+        <div class="robot-avatar">
+            <i class="fa-solid fa-robot"></i>
+        </div>
+        <div class="robot-msg-content">
+            <div class="robot-msg-title"><i class="fa-solid fa-bolt"></i> GOVIND AI VOICE ASSISTANT</div>
+            <div class="robot-msg-text">"नमस्ते! गोविंद टैक्सी बुकिंग में आपका स्वागत है। अपनी सेफ राइड तुरंत बुक करें।"</div>
+            <button class="speak-btn" onclick="playRobotVoice(event)"><i class="fa-solid fa-volume-high"></i> रोबोट आवाज़ सुनें</button>
+        </div>
+    </div>
+
+    <!-- HERO SECTION WITH ROAD ANIMATION -->
     <div class="hero-section">
         <h1 class="hero-title">गोविंद टैक्सी सर्विस</h1>
-        <p class="hero-subtitle">उत्तर प्रदेश और मथुरा-वृंदावन की सबसे भरोसेमंद और सुरक्षित कैब</p>
+        <p class="hero-subtitle">उत्तर प्रदेश & नेशनल हाइवे की नंबर-1 VIP कैब</p>
 
+        <!-- Dynamic Highway Track -->
+        <div class="road-container">
+            <div class="road-lines"></div>
+            <i class="fa-solid fa-car-side animated-car-icon"></i>
+        </div>
+
+        <!-- QUICK BOOKING WIDGET -->
         <div class="booking-card">
             <div class="form-group">
                 <label><i class="fa-solid fa-location-dot"></i> पिकअप स्थान</label>
-                <input type="text" id="pickupLoc" placeholder="अपना पिकअप स्थान डालें">
+                <input type="text" id="pickupLoc" placeholder="अपना पिकअप स्थान दर्ज करें">
                 <button class="gps-btn" onclick="detectGPS()"><i class="fa-solid fa-crosshairs"></i> GPS</button>
             </div>
 
@@ -115,14 +217,81 @@
             </div>
 
             <a href="#" onclick="triggerGovindBooking()" class="btn-govind">
-                <i class="fa-brands fa-whatsapp"></i> VIP Govind Cab बुक करें
+                <i class="fa-brands fa-whatsapp"></i> VIP Ride बुक करें
             </a>
         </div>
     </div>
 
-    <!-- 20 MULTI-PAGE DIRECTORY HUB -->
+    <!-- SHOWROOM CARS SHOWCASE -->
+    <div class="showroom-section">
+        <div class="section-header">
+            <h2>🏎️ हमारी लक्जरी कार फ्लीट</h2>
+            <p>100% सैनिटाइज्ड, एयर-कंडीशन और नए मॉडल की गाड़ियाँ</p>
+        </div>
+
+        <!-- CAR CARD 1: SWIFT DZIRE -->
+        <div class="car-showroom-card">
+            <div class="car-badge">सेडान क्लास</div>
+            <div class="car-visual-box">
+                <i class="fa-solid fa-car"></i>
+            </div>
+            <div class="car-info">
+                <h3>Swift Dzire (Sedan)</h3>
+                <div class="car-rate-tag">₹11/किमी <small style="color:#aaa; font-size:11px;">(अनुमानित शुरूआती)</small></div>
+                <ul class="car-features-list">
+                    <li><i class="fa-solid fa-users"></i> 4 सीटिंग कैपेसिटी</li>
+                    <li><i class="fa-solid fa-snowflake"></i> पावरफुल एसी</li>
+                    <li><i class="fa-solid fa-suitcase"></i> 2 बूट लगेज स्पेस</li>
+                    <li><i class="fa-solid fa-shield"></i> सेफ & क्लीन सीट</li>
+                </ul>
+                <a href="#" onclick="quickBookCar('Swift Dzire')" class="btn-card-book"><i class="fa-brands fa-whatsapp"></i> Dzire कैब बुक करें</a>
+            </div>
+        </div>
+
+        <!-- CAR CARD 2: ERTIGA SUV -->
+        <div class="car-showroom-card">
+            <div class="car-badge">फैमिली SUV</div>
+            <div class="car-visual-box">
+                <i class="fa-solid fa-car-rear"></i>
+            </div>
+            <div class="car-info">
+                <h3>Ertiga (6-Seater SUV)</h3>
+                <div class="car-rate-tag">₹14/किमी <small style="color:#aaa; font-size:11px;">(अनुमानित शुरूआती)</small></div>
+                <ul class="car-features-list">
+                    <li><i class="fa-solid fa-users"></i> 6 सीटिंग कैपेसिटी</li>
+                    <li><i class="fa-solid fa-snowflake"></i> डुअल एसी वेंट</li>
+                    <li><i class="fa-solid fa-suitcase"></i> अतिरिक्त स्पेस</li>
+                    <li><i class="fa-solid fa-mountain"></i> लॉन्ग टूर के लिए बेस्ट</li>
+                </ul>
+                <a href="#" onclick="quickBookCar('Ertiga SUV')" class="btn-card-book"><i class="fa-brands fa-whatsapp"></i> Ertiga SUV बुक करें</a>
+            </div>
+        </div>
+
+        <!-- CAR CARD 3: INNOVA CRYSTA -->
+        <div class="car-showroom-card">
+            <div class="car-badge" style="border-color:var(--accent-gold); color:var(--accent-gold);">VIP लक्जरी</div>
+            <div class="car-visual-box">
+                <i class="fa-solid fa-car-side"></i>
+            </div>
+            <div class="car-info">
+                <h3>Innova Crysta VIP</h3>
+                <div class="car-rate-tag">₹18/किमी <small style="color:#aaa; font-size:11px;">(अनुमानित शुरूआती)</small></div>
+                <ul class="car-features-list">
+                    <li><i class="fa-solid fa-users"></i> 7 सीटिंग कैपेसिटी</li>
+                    <li><i class="fa-solid fa-couch"></i> कैप्टन सीट्स</li>
+                    <li><i class="fa-solid fa-road"></i> एक्सप्रेस-वे स्पेशल</li>
+                    <li><i class="fa-solid fa-star"></i> VIP आराम</li>
+                </ul>
+                <a href="#" onclick="quickBookCar('Innova Crysta VIP')" class="btn-card-book"><i class="fa-brands fa-whatsapp"></i> Innova Crysta बुक करें</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- DIRECTORY HUB -->
     <div class="directory-section">
-        <h2 class="dir-title">🌐 नेशनल पोर्टल पेजेस (20+ सेक्शन्स)</h2>
+        <div class="section-header">
+            <h2>🌐 वेबसाइट सर्विसेज</h2>
+        </div>
         <div class="dir-grid">
             <a href="mathura-darshan.html" class="dir-card">
                 <i class="fa-solid fa-gopuram"></i>
@@ -144,11 +313,6 @@
                 <span>एयरपोर्ट ट्रांसफर</span>
                 <small>दिल्ली/नोएडा NCR</small>
             </a>
-            <a href="fleet-3d.html" class="dir-card">
-                <i class="fa-solid fa-car-side"></i>
-                <span>3D कार फ्लीट</span>
-                <small>सभी गाड़ियों का 3D लुक</small>
-            </a>
             <a href="fare-calculator.html" class="dir-card">
                 <i class="fa-solid fa-calculator"></i>
                 <span>फेयर कैलकुलेटर</span>
@@ -157,17 +321,12 @@
             <a href="digital-invoice.html" class="dir-card">
                 <i class="fa-solid fa-file-invoice"></i>
                 <span>डिजिटल बिल</span>
-                <small>ऑनलाइन इनवॉइस रसीद</small>
+                <small>ऑनलाइन इनवॉइस</small>
             </a>
             <a href="driver-join.html" class="dir-card">
                 <i class="fa-solid fa-id-card"></i>
                 <span>ड्राइवर ऑनबोर्ड</span>
-                <small>अपनी गाड़ी अटैच करें</small>
-            </a>
-            <a href="safety.html" class="dir-card">
-                <i class="fa-solid fa-shield-virus"></i>
-                <span>सुरक्षा गाइड</span>
-                <small>सैनिटाइज्ड & सेफ</small>
+                <small>गाड़ी अटैच करें</small>
             </a>
             <a href="contact-us.html" class="dir-card">
                 <i class="fa-solid fa-headset"></i>
@@ -177,13 +336,35 @@
         </div>
     </div>
 
-    <!-- FIXED BOTTOM ACTION BAR -->
+    <!-- FIXED BOTTOM BAR -->
     <div class="fixed-bottom">
         <a href="tel:9720298593" class="btn-call"><i class="fa-solid fa-phone"></i> डायरेक्ट कॉल</a>
         <a href="#" onclick="triggerGovindBooking()" class="btn-wa"><i class="fa-brands fa-whatsapp"></i> व्हाट्सएप बुकिंग</a>
     </div>
 
     <script>
+        let voicePlayed = false;
+
+        function playRobotVoice(e) {
+            if(e) e.stopPropagation();
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                let text = "नमस्ते! वेलकम टू गोविंद टैक्सी बुकिंग सर्विस। आपकी सेफ और कम्फर्टेबल राइड के लिए उत्तर प्रदेश और ऑल इंडिया कैब बुकिंग उपलब्ध है। नीचे दिए गए बटन पर क्लिक करके अपनी वीआईपी राइड तुरंत बुक करें। थैंक यू!";
+                let msg = new SpeechSynthesisUtterance(text);
+                msg.lang = 'hi-IN';
+                msg.rate = 0.95;
+                msg.pitch = 1.1;
+                window.speechSynthesis.speak(msg);
+            }
+        }
+
+        function playRobotVoiceOnce() {
+            if(!voicePlayed) {
+                voicePlayed = true;
+                playRobotVoice();
+            }
+        }
+
         function detectGPS() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(position => {
@@ -198,12 +379,13 @@
 
         function triggerGovindBooking() {
             let p = document.getElementById('pickupLoc').value || 'मथुरा';
-            let d = document.getElementById('dropLoc').value || 'दिल्ली/स्थानीय';
+            let d = document.getElementById('dropLoc').value || 'स्थानीय/आउटस्टेशन';
             let c = document.getElementById('carType').value;
-            let msg = `नमस्ते Govind Taxi Booking! मुझे राइड बुक करनी है:%0A- पिकअप: ${p}%0A- ड्रॉप: ${d}%0A- कार: ${c}`;
+            let msg = `नमस्ते Govind Taxi Booking! मुझे कैब बुक करनी है:%0A- पिकअप: ${p}%0A- ड्रॉप: ${d}%0A- कार: ${c}`;
             window.open(`https://wa.me/919720298593?text=${msg}`, '_blank');
         }
-    </script>
-</body>
-                </html>
-                
+
+        function quickBookCar(carName) {
+            let msg = `नमस्ते Govind Taxi Booking! मुझे ${carName} गाड़ी बुक करनी है। कृपया रेट व उपलब्धता बताएं।`;
+            window.open(`https://wa.me/9197202985
+            
