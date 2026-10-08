@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>डिजिटल बिल रसीद | Govind Taxi Booking</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #000000;
+            --card-dark: #121212;
+            --accent-gold: #FFD700;
+            --brand-green: #00D26A;
+            --neon-blue: #00F0FF;
+            --border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
+        body { background-color: var(--bg-dark); color: #FFFFFF; overflow-x: hidden; padding-bottom: 80px; }
+
+        /* Top Nav */
+        .top-nav {
+            position: sticky; top: 0; z-index: 1000;
+            background: rgba(18, 18, 18, 0.95); backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color); padding: 15px 20px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .brand-logo { font-size: 16px; font-weight: 900; color: var(--accent-gold); text-decoration: none; }
+        .back-btn { color: var(--neon-blue); text-decoration: none; font-size: 14px; font-weight: bold; }
+
+        /* Hero Banner */
+        .hero-banner {
+            padding: 30px 15px; text-align: center;
+            background: linear-gradient(180deg, #181818 0%, #000 100%);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .hero-banner h1 { font-size: 24px; color: var(--accent-gold); margin-bottom: 8px; }
+        .hero-banner p { font-size: 13px; color: #DDD; }
+
+        .container { padding: 20px 15px; max-width: 500px; margin: 0 auto; }
+
+        .invoice-card {
+            background: var(--card-dark); border: 1px solid var(--border-color);
+            border-radius: 20px; padding: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-size: 12px; color: var(--accent-gold); font-weight: 700; margin-bottom: 6px; }
+        .form-group input {
+            width: 100%; padding: 12px; border-radius: 10px; background: #1E1E1E;
+            border: 1px solid var(--border-color); color: #FFF; outline: none; font-size: 13px;
+        }
+
+        .btn-gen {
+            width: 100%; padding: 14px; border-radius: 25px; border: none; font-weight: 900;
+            font-size: 15px; cursor: pointer; background: linear-gradient(135deg, var(--brand-green), #008f47);
+            color: #FFF; text-transform: uppercase; margin-top: 10px;
+        }
+
+        /* Fixed Bottom Bar */
+        .fixed-bottom {
+            position: fixed; bottom: 0; left: 0; width: 100%; background: #121212;
+            border-top: 1px solid var(--border-color); display: flex; padding: 12px; gap: 10px; z-index: 1000;
+        }
+        .fixed-bottom a { flex: 1; text-align: center; padding: 12px; border-radius: 30px; font-weight: bold; font-size: 13px; text-decoration: none; color: #fff; }
+        .btn-call { background: #007BFF; }
+        .btn-wa { background: #25D366; }
+    </style>
+</head>
+<body>
+
+    <!-- TOP NAV -->
+    <div class="top-nav">
+        <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> होम पेज</a>
+        <a href="index.html" class="brand-logo"><i class="fa-solid fa-car-side"></i> GOVIND TAXI</a>
+    </div>
+
+    <!-- HERO BANNER -->
+    <div class="hero-banner">
+        <h1>📄 डिजिटल बिल रिक्वेस्ट</h1>
+        <p>अपनी यात्रा की रसीद या बिल व्हाट्सएप पर प्राप्त करें</p>
+    </div>
+
+    <div class="container">
+        <div class="invoice-card">
+            <div class="form-group">
+                <label><i class="fa-solid fa-user"></i> आपका पूरा नाम</label>
+                <input type="text" id="custName" placeholder="नाम दर्ज करें">
+            </div>
+
+            <div class="form-group">
+                <label><i class="fa-solid fa-route"></i> यात्रा (कहाँ से कहाँ तक)</label>
+                <input type="text" id="routeDetails" placeholder="उदा. मथुरा से दिल्ली">
+            </div>
+
+            <div class="form-group">
+                <label><i class="fa-solid fa-indian-rupee-sign"></i> कुल भुगतान राशि (₹)</label>
+                <input type="number" id="paidAmount" placeholder="उदा. 2500">
+            </div>
+
+            <button class="btn-gen" onclick="sendInvoiceReq()"><i class="fa-brands fa-whatsapp"></i> व्हाट्सएप पर बिल मंगाएं</button>
+        </div>
+    </div>
+
+    <!-- FIXED BOTTOM BAR -->
+    <div class="fixed-bottom">
+        <a href="tel:9720298593" class="btn-call"><i class="fa-solid fa-phone"></i> डायरेक्ट कॉल</a>
+        <a href="https://wa.me/919720298593?text=नमस्ते Govind Taxi! मुझे बिल के बारे में सहायता चाहिए।" class="btn-wa"><i class="fa-brands fa-whatsapp"></i> व्हाट्सएप सहायता</a>
+    </div>
+
+    <script>
+        function sendInvoiceReq() {
+            let name = document.getElementById('custName').value || 'ग्राहक';
+            let route = document.getElementById('routeDetails').value || 'लोकल/आउटस्टेशन';
+            let amount = document.getElementById('paidAmount').value || '0';
+
+            let msg = `नमस्ते Govind Taxi! मुझे राइड बिल रसीद चाहिए:%0A- नाम: ${name}%0A- यात्रा: ${route}%0A- भुगतान राशि: ₹${amount}`;
+            window.open(`https://wa.me/919720298593?text=${msg}`, '_blank');
+        }
+    </script>
+
+</body>
+</html>
